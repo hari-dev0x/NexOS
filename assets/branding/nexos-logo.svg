@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512">
+  <title>NexOS canonical symbol</title>
+  <desc>Four-component NexOS symbol reconstructed from the identity reference.</desc>
+  <defs>
+    <linearGradient id="warm-main" x1="96" y1="92" x2="406" y2="420" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#FF8A00"/>
+      <stop offset="0.55" stop-color="#FF5A4F"/>
+      <stop offset="1" stop-color="#FF3F65"/>
+    </linearGradient>
+    <linearGradient id="warm-diagonal" x1="132" y1="146" x2="360" y2="374" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#FF8A00"/>
+      <stop offset="0.58" stop-color="#FF5A4F"/>
+      <stop offset="1" stop-color="#FF3F65"/>
+    </linearGradient>
+    <linearGradient id="warm-core" x1="260" y1="205" x2="347" y2="348" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#FF5A4F"/>
+      <stop offset="1" stop-color="#FF3F65"/>
+    </linearGradient>
+    <linearGradient id="warm-arc-b" x1="385" y1="198" x2="319" y2="417" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#FF3F65"/>
+      <stop offset="1" stop-color="#FF5A4F"/>
+    </linearGradient>
+  </defs>
+  <g id="outer-arc-a" fill="none" stroke="url(#warm-main)" stroke-width="40" stroke-linecap="round">
+    <path d="M129 112 A181 181 0 0 1 389 187"/>
+    <path d="M103 166 A181 181 0 0 0 112 354"/>
+    <path d="M154 396 A181 181 0 0 0 241 433"/>
+  </g>
+  <path id="main-diagonal" fill="url(#warm-diagonal)" d="M118 151 L154 115 L347 308 L347 375 Z"/>
+  <path id="core-nex" fill="url(#warm-core)" d="M292 206 L347 261 L347 331 L292 276 Z"/>
+  <g id="outer-arc-b" fill="none" stroke="url(#warm-arc-b)" stroke-width="40" stroke-linecap="round">
+    <path d="M407 222 A181 181 0 0 1 409 305"/>
+    <path d="M389 347 A181 181 0 0 1 318 414"/>
+  </g>
+</svg>

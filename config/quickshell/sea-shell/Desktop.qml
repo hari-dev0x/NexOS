@@ -1,0 +1,290 @@
+// sea-shell — the desktop
+//
+// The space between the bar and the dock, which the shell has never done anything with.
+// One surface per monitor on the BOTTOM layer: above the wallpaper, below every window, so
+// nothing here can ever cover something you are working in.
+//
+// INPUT IS THE HARD PART, and getting it wrong is worse than having no desktop at all. A
+// full-screen layer surface that accepts input swallows every pointer event that would have
+// reached the desktop — scroll-to-switch-workspace, drag-to-select, any mouse bind you have
+// — and it does so silently, because there is nothing visible there to blame. So the input
+// region is exactly the widgets and nothing else: one Region per item, rebuilt as items
+// move. Only while ARRANGING does the whole surface take input, and that is a mode you
+// entered on purpose and can see.
+//
+// POSITIONS ARE FRACTIONS, not pixels. A desktop laid out on a 1440p monitor and reopened
+// on a 1080p one should hold its arrangement, and a widget parked against the right edge
+// should stay against the right edge.
+//
+// PLACEMENT IS ADVICE. sea-wallpaper-quiet.py works out which parts of the wallpaper have
+// something in them; while you drag, that map is drawn as keep-clear shading and a dropped
+// widget is nudged out of a busy cell IF a calmer one is within two cells. It is a nudge
+// and not a rule: the map is right about eleven wallpapers in twelve, and the twelfth is
+// yours to overrule. Hold SHIFT while dropping to place exactly where the pointer is.
+import Quickshell
+import Quickshell.Io
+import Quickshell.Wayland
+import QtQuick
+
+PanelWindow {
+    id: root
+
+    property var pal
+    property string uiFont: "sans"
+    property real ui: 1.0
+    property bool editing: false
+    // Readings for the widgets, supplied by the bar (see shell.qml).
+    property var readings: ({})
+    property var player: null
+    property var viz: []
+
+    // A short history of load, so the system widget can draw a trace rather than a number.
+    // Sampled here rather than in each widget: one buffer, one cadence, and every system
+    // widget on every monitor shows the same line.
+    property var cpuHistory: []
+    property var memHistory: []
+    property var gpuHistory: []
+    Timer {
+        interval: 2000
+        running: true
+        repeat: true
+        triggeredOnStart: true
+        onTriggered: {
+            var r = root.readings || {};
+            function push(buf, v) {
+                var h = buf.slice(-39);
+                h.push(Math.max(0, Math.min(100, v || 0)));
+                return h;
+            }
+            root.cpuHistory = push(root.cpuHistory, r.cpu);
+            root.memHistory = push(root.memHistory, r.memPct);
+            root.gpuHistory = push(root.gpuHistory, r.gpu);
+        }
+    }
+    // Kept clear at the top and bottom so nothing is ever parked under the bar or the dock.
+    property int insetTop: 0
+    property int insetBottom: 0
+
+    color: "transparent"
+    WlrLayershell.namespace: "sea-shell:desktop"
+    WlrLayershell.layer: WlrLayer.Bottom
+    WlrLayershell.keyboardFocus: WlrKeyboardFocus.None
+    exclusionMode: ExclusionMode.Ignore
+    anchors { top: true; left: true; right: true; bottom: true }
+
+    readonly property real sw: root.width / root.ui
+    readonly property real sh: root.height / root.ui
+
+    // ---------- the arrangement ----------
+    property var items: []
+    readonly property string confPath:
+        Quickshell.env("HOME") + "/.config/sea-shell/desktop.json"
+
+    FileView {
+        id: conf
+        path: root.confPath
+        watchChanges: true
+        function apply() {
+            try {
+                reload();
+                var t = text();
+                if (!t || !t.trim()) { root.items = []; return }
+                var j = JSON.parse(t);
+                root.items = (j && j.items) ? j.items : [];
+            } catch (e) {
+                root.items = [];
+            }
+        }
+        onFileChanged: apply()
+        onLoaded: apply()
+        Component.onCompleted: apply()
+    }
+
+    // ONE WRITER, AND IT IS NOT THIS FILE.
+    //
+    // This used to write the arrangement itself, and twice it destroyed one: it serialised
+    // `root.items`, which is a COPY of the file made when the FileView last parsed it, so
+    // any moment that copy was stale or partial the next drag wrote the stale version over
+    // the real one — five widgets became one, with no error anywhere. A surface that also
+    // owns the record will eventually overwrite the record with what it happens to be
+    // showing. So every change is a request to sea-desktop.py, which reads the file, edits
+    // it and writes it back; this file only ever reads.
+    Process { id: helperProc }
+    readonly property string helper:
+        Quickshell.env("HOME") + "/.config/quickshell/sea-shell/sea-desktop.py"
+    function ask(args) {
+        helperProc.command = ["python3", root.helper].concat(args);
+        helperProc.running = true;
+    }
+    function removeItem(id) { if (id) root.ask(["--remove", "" + id]) }
+    function moveItem(id, x, y, pin) {
+        if (!id) return;
+        root.ask(["--move", "" + id, "--x", "" + x, "--y", "" + y, pin ? "--pin" : "--unpin"]);
+    }
+
+    // ---------- the quiet map ----------
+    property var quiet: ({})
+    readonly property var qmap: (root.quiet && root.quiet.map) ? root.quiet.map : []
+    readonly property int qw: (root.quiet && root.quiet.gw) ? root.quiet.gw : 96
+    readonly property int qh: (root.quiet && root.quiet.gh) ? root.quiet.gh : 54
+    readonly property bool haveQuiet: root.qmap.length === root.qw * root.qh
+
+    FileView {
+        id: quietFile
+        path: Quickshell.env("HOME") + "/.cache/sea-shell/wallquiet.json"
+        watchChanges: true
+        function apply() {
+            try {
+                reload();
+                var t = text();
+                root.quiet = (t && t.trim()) ? JSON.parse(t) : ({});
+            } catch (e) {
+                root.quiet = ({});
+            }
+        }
+        onFileChanged: apply()
+        onLoaded: apply()
+        Component.onCompleted: apply()
+    }
+
+    // How much is going on under a rectangle given in FRACTIONS of the screen. 0 is empty.
+    function busyAt(fx, fy, fw, fh) {
+        if (!root.haveQuiet) return 0;
+        var x0 = Math.max(0, Math.floor(fx * root.qw));
+        var y0 = Math.max(0, Math.floor(fy * root.qh));
+        var x1 = Math.min(root.qw, Math.ceil((fx + fw) * root.qw));
+        var y1 = Math.min(root.qh, Math.ceil((fy + fh) * root.qh));
+        if (x1 <= x0 || y1 <= y0) return 0;
+        var sum = 0, n = 0;
+        for (var y = y0; y < y1; y++)
+            for (var x = x0; x < x1; x++) { sum += root.qmap[y * root.qw + x]; n++ }
+        return n ? (sum / n) / 255 : 0;
+    }
+
+    // Anything above this is "there is something here". Chosen against the measured library:
+    // wallpapers with a subject sit well above it, open sky and water well below.
+    readonly property real busyLimit: 0.30
+
+    // The nudge. Search outward a couple of cells for somewhere calmer; if nowhere within
+    // reach is better, leave the drop exactly where it was put.
+    function settle(fx, fy, fw, fh) {
+        if (!root.haveQuiet) return Qt.point(fx, fy);
+        var here = root.busyAt(fx, fy, fw, fh);
+        if (here <= root.busyLimit) return Qt.point(fx, fy);
+        var stepX = 1 / root.qw, stepY = 1 / root.qh;
+        var best = here, bx = fx, by = fy;
+        for (var dy = -2; dy <= 2; dy++) {
+            for (var dx = -2; dx <= 2; dx++) {
+                var nx = Math.max(0, Math.min(1 - fw, fx + dx * stepX));
+                var ny = Math.max(0, Math.min(1 - fh, fy + dy * stepY));
+                var s = root.busyAt(nx, ny, fw, fh);
+                if (s < best - 0.02) { best = s; bx = nx; by = ny }
+            }
+        }
+        return Qt.point(bx, by);
+    }
+
+    // ---------- input region ----------
+    // One Region per item so the rest of the desktop keeps working. See the header.
+    Instantiator {
+        id: maskPool
+        model: root.editing ? 0 : root.items.length
+        delegate: Region {
+            required property int index
+            x: Math.round((root.items[index] ? root.items[index].x : 0) * root.sw * root.ui)
+            y: Math.round(((root.items[index] ? root.items[index].y : 0) * root.sh + root.insetTop) * root.ui)
+            width: Math.round((root.items[index] ? root.items[index].w : 0) * root.sw * root.ui)
+            height: Math.round((root.items[index] ? root.items[index].h : 0) * root.sh * root.ui)
+        }
+        onObjectAdded: root.rebuildMask()
+        onObjectRemoved: root.rebuildMask()
+    }
+    property var maskRegions: []
+    function rebuildMask() {
+        var a = [];
+        for (var i = 0; i < maskPool.count; i++) a.push(maskPool.objectAt(i));
+        root.maskRegions = a;
+    }
+    onItemsChanged: root.rebuildMask()
+
+    mask: Region {
+        // Arranging takes the whole screen, so a widget can be dragged anywhere including
+        // off one edge and back. Otherwise: the widgets, and nothing else.
+        item: root.editing ? root.contentItem : null
+        regions: root.editing ? [] : root.maskRegions
+    }
+
+    // ---------- what is drawn ----------
+    Item {
+        anchors.fill: parent
+        scale: root.ui
+        transformOrigin: Item.TopLeft
+        width: root.sw
+        height: root.sh
+
+        // While arranging, the whole surface takes input (see the mask above), which is the
+        // one moment a click on empty desktop can be heard at all. Right-click ends the
+        // mode — the same gesture that dismisses every other transient state in this shell.
+        MouseArea {
+            anchors.fill: parent
+            enabled: root.editing
+            acceptedButtons: Qt.RightButton
+            onClicked: root.editing = false
+        }
+
+        // keep-clear shading, only while arranging. The point is that you can SEE what the
+        // shell thinks is in the picture, and disagree with it.
+        Item {
+            anchors.fill: parent
+            visible: root.editing && root.haveQuiet
+            opacity: 0.55
+            Repeater {
+                model: root.editing && root.haveQuiet ? root.qw * root.qh : 0
+                delegate: Rectangle {
+                    required property int index
+                    readonly property real v: root.qmap[index] / 255
+                    visible: v > root.busyLimit
+                    x: (index % root.qw) * (root.sw / root.qw)
+                    y: Math.floor(index / root.qw) * ((root.sh - root.insetTop - root.insetBottom) / root.qh) + root.insetTop
+                    width: root.sw / root.qw + 1
+                    height: (root.sh - root.insetTop - root.insetBottom) / root.qh + 1
+                    color: root.pal ? root.pal.a(root.pal.bad, Math.min(0.5, (v - root.busyLimit) * 1.1))
+                                    : Qt.rgba(1, 0.2, 0.2, Math.min(0.5, (v - root.busyLimit) * 1.1))
+                }
+            }
+        }
+
+        Repeater {
+            model: root.items
+            delegate: DesktopItem {
+                required property var modelData
+                required property int index
+                pal: root.pal
+                uiFont: root.uiFont
+                spec: modelData
+                editing: root.editing
+                readings: root.readings
+                player: root.player
+                viz: root.viz
+                // What the wallpaper is doing under this item, so it can decide whether it
+                // needs a ground at all. Same map, same threshold as the placement nudge.
+                busy: root.busyAt(modelData.x, modelData.y, modelData.w, modelData.h)
+                history: root.cpuHistory
+                memHistory: root.memHistory
+                gpuHistory: root.gpuHistory
+                fieldW: root.sw
+                fieldH: root.sh - root.insetTop - root.insetBottom
+                fieldY: root.insetTop
+                onRemoved: root.removeItem(modelData.id)
+                onMoved: (fx, fy, exact) => {
+                    // SHIFT is one statement, not two: "put it exactly here" and "stop
+                    // moving it when the wallpaper changes" are the same intent — you have
+                    // overruled the map, and it would be rude to overrule you back tomorrow.
+                    var p = exact ? Qt.point(fx, fy)
+                                  : root.settle(fx, fy, modelData.w, modelData.h);
+                    root.moveItem(modelData.id, p.x, p.y, exact);
+                }
+            }
+        }
+    }
+}

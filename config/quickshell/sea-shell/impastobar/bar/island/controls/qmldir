@@ -1,0 +1,17 @@
+module ImpastoControls
+AppearanceCard 1.0 AppearanceCard.qml
+Block 1.0 Block.qml
+BlockFace 1.0 BlockFace.qml
+BlockInspector 1.0 BlockInspector.qml
+CalendarCard 1.0 CalendarCard.qml
+ClockBlock 1.0 ClockBlock.qml
+ControlsTray 1.0 ControlsTray.qml
+GamesBlock 1.0 GamesBlock.qml
+ImpastoBlock 1.0 ImpastoBlock.qml
+MediaCard 1.0 MediaCard.qml
+NotificationList 1.0 NotificationList.qml
+PetBlock 1.0 PetBlock.qml
+PowerRow 1.0 PowerRow.qml
+TasksBlock 1.0 TasksBlock.qml
+TogglesBlock 1.0 TogglesBlock.qml
+WeatherCard 1.0 WeatherCard.qml

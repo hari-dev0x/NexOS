@@ -1,0 +1,8 @@
+[SddmGreeterTheme]
+Name=NexOS
+Description=NexOS Official Hardware Login Greeter
+Author=NexOS
+Type=sddm-theme
+Version=1.0
+MainScript=Main.qml
+ConfigFile=theme.conf

@@ -1,0 +1,46 @@
+# Python bytecode & runtime cache
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.pytest_cache/
+.mypy_cache/
+
+# System runtime files, sockets, locks & pids
+*.sock
+*.pid
+*.lock
+*.log
+*.bak*
+
+# OS & editor junk
+.DS_Store
+Thumbs.db
+*~
+*.swp
+*.swo
+.vscode/
+.idea/
+
+# Machine-specific state & private sessions
+.autonomous/
+AUTONOMOUS_SESSION.md
+checkpoint-*
+
+# Secrets, tokens & credentials
+*.env
+*.env.*
+*.pem
+*.key
+id_rsa
+id_ed25519
+credentials.json
+token.json
+
+# Nex Companion internal services (strictly excluded from public release)
+*sentinel*
+*nex_service*
+*NexService*
+*NexPanel*
+*NexWidget*
+*NexGlyph*

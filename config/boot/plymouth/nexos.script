@@ -1,0 +1,170 @@
+# NexOS Hardware Boot Animation Script
+# Absolute Pure Black (#000000), Restrained Precision Geometric Assembly & Handoff
+
+Window.SetBackgroundTopColor(0, 0, 0);
+Window.SetBackgroundBottomColor(0, 0, 0);
+Plymouth.SetRefreshRate(30);
+
+fun clamp(value, low, high)
+  {
+    if (value < low) return low;
+    if (value > high) return high;
+    return value;
+  }
+
+screen.x = Window.GetX();
+screen.y = Window.GetY();
+screen.width = Window.GetWidth();
+screen.height = Window.GetHeight();
+
+center_x = screen.x + screen.width / 2;
+center_y = screen.y + screen.height / 2;
+
+# Preload 130 logo animation frames (0.00s - 4.30s hardware sequence)
+logo_frames_count = 130;
+for (i = 0; i < logo_frames_count; i++)
+  {
+    logo_frames[i] = Image("logo-" + i + ".png");
+  }
+logo_final = Image("logo-final.png");
+
+# Preload 9 glitch transition frames (266ms hardware handoff sequence)
+trans_frames_count = 9;
+for (i = 0; i < trans_frames_count; i++)
+  {
+    trans_frames[i] = Image("trans-" + i + ".png");
+  }
+
+# Logo Sprite centered exactly on screen
+logo_w = logo_frames[0].GetWidth();
+logo_h = logo_frames[0].GetHeight();
+logo_x = center_x - logo_w / 2;
+logo_y = center_y - logo_h / 2;
+logo_sprite = Sprite();
+logo_sprite.SetPosition(logo_x, logo_y, 10);
+logo_sprite.SetOpacity(0);
+
+# Transition Sprite (Full 1920x1080 canvas aligned at screen origin)
+trans_sprite = Sprite();
+trans_sprite.SetPosition(screen.x, screen.y, 20);
+trans_sprite.SetOpacity(0);
+
+# System Message & Dialog Sprites (LUKS password & recovery)
+message.sprite = Sprite();
+message.sprite.SetZ(10000);
+message.sprite.SetOpacity(0);
+message.text = "";
+
+dialog.visible = 0;
+dialog.sprite = Sprite();
+dialog.sprite.SetZ(10001);
+dialog.sprite.SetOpacity(0);
+dialog.bullet_sprite = Sprite();
+dialog.bullet_sprite.SetZ(10001);
+dialog.bullet_sprite.SetOpacity(0);
+
+# Animation state
+anim_frame = 0;
+trans_frame = 0;
+
+fun refresh_callback()
+  {
+    if (dialog.visible == 1) return;
+
+    if (anim_frame < logo_frames_count)
+      {
+        logo_sprite.SetImage(logo_frames[anim_frame]);
+        logo_sprite.SetOpacity(1);
+        anim_frame++;
+      }
+    else if (trans_frame < trans_frames_count)
+      {
+        logo_sprite.SetOpacity(0);
+        trans_sprite.SetImage(trans_frames[trans_frame]);
+        trans_sprite.SetOpacity(1);
+        trans_frame++;
+      }
+    else
+      {
+        logo_sprite.SetOpacity(0);
+        trans_sprite.SetImage(trans_frames[trans_frames_count - 1]);
+        trans_sprite.SetOpacity(1);
+      }
+  }
+
+fun progress_callback(duration, progress)
+  {
+    # Clean hardware boot - no progress bar
+  }
+
+fun display_normal_callback()
+  {
+    dialog.visible = 0;
+    dialog.sprite.SetOpacity(0);
+    dialog.bullet_sprite.SetOpacity(0);
+    if (message.text != "") message.sprite.SetOpacity(1);
+  }
+
+fun display_password_callback(prompt, bullets)
+  {
+    dialog.visible = 1;
+    logo_sprite.SetOpacity(0);
+    trans_sprite.SetOpacity(0);
+    message.sprite.SetOpacity(0);
+
+    dialog.text = Image.Text(prompt, 0.95, 0.95, 0.95, 1, "Noto Sans 14", "center");
+    dialog.sprite.SetImage(dialog.text);
+    dialog.sprite.SetPosition(center_x - dialog.text.GetWidth() / 2,
+                              center_y - dialog.text.GetHeight(), 10001);
+    dialog.sprite.SetOpacity(1);
+
+    dialog.bullets = "";
+    visible_bullets = clamp(bullets, 0, 16);
+    for (index = 0; index < visible_bullets; index++) dialog.bullets = dialog.bullets + "*";
+    dialog.bullet_image = Image.Text(dialog.bullets, 0.46, 0.66, 0.98, 1, "Noto Sans 18", "center");
+    dialog.bullet_sprite.SetImage(dialog.bullet_image);
+    dialog.bullet_sprite.SetPosition(center_x - dialog.bullet_image.GetWidth() / 2,
+                                     center_y + dialog.text.GetHeight(), 10001);
+    dialog.bullet_sprite.SetOpacity(1);
+  }
+
+fun display_message_callback(text)
+  {
+    message.text = text;
+    message.image = Image.Text(text, 0.78, 0.78, 0.78, 1, "Noto Sans 10", "center");
+    message.sprite.SetImage(message.image);
+    message.sprite.SetPosition(center_x - message.image.GetWidth() / 2,
+                               screen.y + screen.height * 0.90, 10000);
+    message.sprite.SetOpacity(1);
+  }
+
+fun hide_message_callback(text)
+  {
+    if (text == message.text)
+      {
+        message.sprite.SetOpacity(0);
+        message.text = "";
+      }
+  }
+
+fun quit_callback()
+  {
+    logo_sprite.SetOpacity(0);
+    # Keep final transition frame (Samsung Galaxy) visible during retain-splash handoff
+    if (trans_frame > 0)
+      {
+        trans_sprite.SetOpacity(1);
+      }
+    else
+      {
+        trans_sprite.SetOpacity(0);
+      }
+  }
+
+Plymouth.SetRefreshFunction(refresh_callback);
+Plymouth.SetBootProgressFunction(progress_callback);
+Plymouth.SetDisplayNormalFunction(display_normal_callback);
+Plymouth.SetDisplayPasswordFunction(display_password_callback);
+Plymouth.SetDisplayMessageFunction(display_message_callback);
+Plymouth.SetHideMessageFunction(hide_message_callback);
+Plymouth.SetQuitFunction(quit_callback);

@@ -1,0 +1,21 @@
+module ImpastoIsland
+AppearancePanel 1.0 AppearancePanel.qml
+BluetoothDetail 1.0 BluetoothDetail.qml
+BoardPanel 1.0 BoardPanel.qml
+ControlsPanel 1.0 ControlsPanel.qml
+DetailFace 1.0 DetailFace.qml
+GamesPanel 1.0 GamesPanel.qml
+IslandRest 1.0 IslandRest.qml
+IslandState 1.0 IslandState.qml
+IslandSummary 1.0 IslandSummary.qml
+KeysPanel 1.0 KeysPanel.qml
+LauncherPanel 1.0 LauncherPanel.qml
+NetworkDetail 1.0 NetworkDetail.qml
+NotesPanel 1.0 NotesPanel.qml
+NotificationLayer 1.0 NotificationLayer.qml
+OsdLayer 1.0 OsdLayer.qml
+OverviewPanel 1.0 OverviewPanel.qml
+PackagesPanel 1.0 PackagesPanel.qml
+PetPanel 1.0 PetPanel.qml
+SessionPanel 1.0 SessionPanel.qml
+StatsPanel 1.0 StatsPanel.qml

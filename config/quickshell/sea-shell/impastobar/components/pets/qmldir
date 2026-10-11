@@ -1,0 +1,7 @@
+module ImpastoPets
+PetCreature 1.0 PetCreature.qml
+PetEgg 1.0 PetEgg.qml
+PetPaper 1.0 PetPaper.qml
+PetPixel 1.0 PetPixel.qml
+PetPlush 1.0 PetPlush.qml
+PetSoftFace 1.0 PetSoftFace.qml

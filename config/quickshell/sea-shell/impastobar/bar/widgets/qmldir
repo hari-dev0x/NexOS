@@ -1,0 +1,7 @@
+module ImpastoWidgets
+BarChip 1.0 BarChip.qml
+BarZone 1.0 BarZone.qml
+BatteryWidget 1.0 BatteryWidget.qml
+DynamicIsland 1.0 DynamicIsland.qml
+TimerWidget 1.0 TimerWidget.qml
+WorkspacesWidget 1.0 WorkspacesWidget.qml

@@ -1,0 +1,22 @@
+module ImpastoModules
+BatteryModule 1.0 BatteryModule.qml
+BluetoothModule 1.0 BluetoothModule.qml
+BrightnessModule 1.0 BrightnessModule.qml
+CalendarModule 1.0 CalendarModule.qml
+ChipFace 1.0 ChipFace.qml
+ClaudeModule 1.0 ClaudeModule.qml
+ClockModule 1.0 ClockModule.qml
+GamesModule 1.0 GamesModule.qml
+GithubModule 1.0 GithubModule.qml
+MediaModule 1.0 MediaModule.qml
+Module 1.0 Module.qml
+NetworkModule 1.0 NetworkModule.qml
+NotesModule 1.0 NotesModule.qml
+NotificationsModule 1.0 NotificationsModule.qml
+PetModule 1.0 PetModule.qml
+StatsModule 1.0 StatsModule.qml
+TasksModule 1.0 TasksModule.qml
+TimerModule 1.0 TimerModule.qml
+UpdatesModule 1.0 UpdatesModule.qml
+VolumeModule 1.0 VolumeModule.qml
+WeatherModule 1.0 WeatherModule.qml
