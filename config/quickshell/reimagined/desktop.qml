@@ -377,12 +377,12 @@ Item {
                             }
 
                             Rectangle {
-                                width: 85; height: 28; radius: Tokens.rControl
+                                width: 95; height: 28; radius: Tokens.rControl
                                 color: Tokens.elevated; border.width: 1; border.color: Tokens.borderSubtle
-                                Text { anchors.centerIn: parent; text: "Volume Panel"; font.family: Tokens.fontSans; font.pixelSize: 11; color: Tokens.textPrimary }
+                                Text { anchors.centerIn: parent; text: "Sound Surface"; font.family: Tokens.fontSans; font.pixelSize: 11; color: Tokens.textPrimary }
                                 MouseArea {
                                     anchors.fill: parent; cursorShape: Qt.PointingHandCursor
-                                    onClicked: topBar.openPanel = (topBar.openPanel === "volume") ? "" : "volume"
+                                    onClicked: topBar.openPanel = (topBar.openPanel === "sound") ? "" : "sound"
                                 }
                             }
 

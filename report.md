@@ -160,3 +160,51 @@ All Phase 1 work is strictly isolated on branch `NexOS-reimagined` of repository
 ## Known Assumptions & Next Phases
 - **Phase 1 Boundary:** Features outside Phase 1 (full application launcher, capture/screenshot editor, terminal GUI, live wallpapers, widget platform, system settings application, and lock-screen authentication) were intentionally omitted.
 - **Compositor Services:** Hardware volume/brightness/network backend bindings will be attached to system services in Phase 2; in Phase 1, UI states are fully reactive and functional within the spatial shell framework.
+
+
+---
+
+## Phase 1 Correction Log: Native Spatial Capsule & Source-Reused Audio Implementation
+
+### 1. Architectural Rework: Unified Spatial Control Surface
+- **What changed:** Replaced detached rectangular dropdown panels (`OriginExpansion.qml`) with a continuous, native morphing control surface ([`SpatialCapsuleSurface.qml`](file:///home/hari/hari-dev0x/Projects/NexOS/config/quickshell/reimagined/bar/SpatialCapsuleSurface.qml)) embedded directly into [`TopBar.qml`](file:///home/hari/hari-dev0x/Projects/NexOS/config/quickshell/reimagined/bar/TopBar.qml).
+- **Physical growth model:** When a control is clicked (e.g., Volume chip, Center Island, or Control Center), the capsule region physically grows both horizontally and vertically directly from that control's location:
+  - Anchors flush with the top bar's top margin (`y: Tokens.barTopMargin = 8px`).
+  - Animates width from the trigger's compact width to the content's calculated target width (`440px` for Sound).
+  - Animates height from the compact bar height (`38px`) to the content's required height (dynamically calculated based on active audio streams and output devices).
+  - Animates horizontal position from the trigger's coordinate to the centered target position, clamped safely within screen margins.
+  - Morphs corner radius from full pill (`19px`) to card radius (`24px`).
+- **Coherent switching:** Switching between controls (e.g., from Volume to Control Center) smoothly glides dimensions and position on the same animation clock without abrupt close/reopen cycles.
+- **Dismissal:** Dismisses naturally via clicking the active trigger chip again, clicking outside the expanded surface, or pressing `Escape`. Clicks and slider drags inside the expanded surface never trigger unexpected closures.
+
+### 2. Direct Source Reuse: Impasto Audio System & Sound Surface
+Reused and adapted directly from the authoritative Impasto reference repository (`https://github.com/andreumassanet/impasto`, GPL-3.0 License by Andreu Massanet):
+
+#### A. [`services/AudioService.qml`](file:///home/hari/hari-dev0x/Projects/NexOS/config/quickshell/reimagined/services/AudioService.qml)
+- **Source:** [`impasto/services/AudioService.qml`](file:///home/hari/.config/quickshell/nexos/impasto-topbar/services/AudioService.qml).
+- **Capabilities & Responsibilities:**
+  - Direct reactive PipeWire integration via `Quickshell.Services.Pipewire` with `PwObjectTracker`.
+  - Binds live system sink (`Pipewire.defaultAudioSink`) and source (`Pipewire.defaultAudioSource`).
+  - Discovers all available physical audio output nodes (`outputs`), active per-application playback streams (`streams`), microphone input nodes (`inputs`), and recording capture streams (`captures`).
+  - Exposes reactive muting, master level adjustments (`setVolume`), stream volume control (`setStreamVolume`), stream mute toggles (`toggleStreamMute`), microphone volume control (`setSourceVolume`), and output/input device routing (`choose`, `chooseInput`).
+  - Dynamically calculates exact panel dimensions (`panelWidth: 440`, `panelHeight`).
+- **Compatibility Adaptation:** Removed external theme couplings, bound directly to `Tokens.qml`, and resolved reserved JavaScript variable names (`short` -> `shortName`) for strict QtQuick compatibility.
+
+#### B. [`bar/SoundDetail.qml`](file:///home/hari/hari-dev0x/Projects/NexOS/config/quickshell/reimagined/bar/SoundDetail.qml)
+- **Source:** [`impasto/bar/island/SoundDetail.qml`](file:///home/hari/.config/quickshell/nexos/impasto-topbar/bar/island/SoundDetail.qml).
+- **Capabilities & Responsibilities:**
+  - Header: [`DetailHeading.qml`](file:///home/hari/hari-dev0x/Projects/NexOS/config/quickshell/reimagined/bar/DetailHeading.qml) displaying active output device name, PipeWire live status dot, and back/close button.
+  - Section 1 (Master Output): [`LevelRow.qml`](file:///home/hari/hari-dev0x/Projects/NexOS/config/quickshell/reimagined/bar/LevelRow.qml) with volume icon, device name, and full-track tactile slider with mute toggle.
+  - Section 2 (Applications): Repeater over active PipeWire streams, showing per-application icon, application name, individual volume slider, and individual mute button.
+  - Section 3 (Output Devices): Repeater over physical audio sinks via [`DetailChoice.qml`](file:///home/hari/hari-dev0x/Projects/NexOS/config/quickshell/reimagined/bar/DetailChoice.qml) with device selection radio checkmarks and live device routing.
+  - Section 4 (Microphone & Input): Microphone level slider, mute toggle, and available input source selectors.
+
+#### C. Tactile Sliders & Rows
+- [`bar/SliderRow.qml`](file:///home/hari/hari-dev0x/Projects/NexOS/config/quickshell/reimagined/bar/SliderRow.qml): Adapted from [`impasto/components/SliderRow.qml`](file:///home/hari/.config/quickshell/nexos/impasto-topbar/components/SliderRow.qml). Full-width tactile slider with animated filled accent track, icon mute target, and monospace percentage readout.
+- [`bar/LevelRow.qml`](file:///home/hari/hari-dev0x/Projects/NexOS/config/quickshell/reimagined/bar/LevelRow.qml): Adapted from [`impasto/bar/island/LevelRow.qml`](file:///home/hari/.config/quickshell/nexos/impasto-topbar/bar/island/LevelRow.qml). Uniform row with mark (app icon or glyph), label, and SliderRow.
+- [`bar/DetailHeading.qml`](file:///home/hari/hari-dev0x/Projects/NexOS/config/quickshell/reimagined/bar/DetailHeading.qml), [`DetailSection.qml`](file:///home/hari/hari-dev0x/Projects/NexOS/config/quickshell/reimagined/bar/DetailSection.qml), [`DetailChoice.qml`](file:///home/hari/hari-dev0x/Projects/NexOS/config/quickshell/reimagined/bar/DetailChoice.qml).
+
+### 3. Transition & Motion Alignment
+- Easing and duration are directly aligned with Impasto's authoritative morphing model (`durationMerge: 340ms`, `Easing.OutCubic`).
+- Animated properties (`x`, `width`, `height`, `radius`, `opacity`) execute on a single coordinated clock to eliminate per-frame jitter.
+- Rest state retains the geometrically centered floating island and compact status cluster.

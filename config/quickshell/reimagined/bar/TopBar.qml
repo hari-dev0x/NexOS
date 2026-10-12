@@ -1,7 +1,9 @@
 // ╭──────────────────────────────────────────────────────────────────────────╮
 // │                                                                          │
 // │   N E X O S   R E I M A G I N E D   ·   T O P   B A R                    │
-// │   Unified capsule bar with stable geometric centering & origin expansion │
+// │   Unified spatial control surface with native morphing capsule expansion │
+// │                                                                          │
+// │   Derived from Impasto & transitions.dev spatial geometry models         │
 // │                                                                          │
 // ╰──────────────────────────────────────────────────────────────────────────╯
 
@@ -9,29 +11,21 @@ import QtQuick
 import "../tokens"
 import "../motion"
 import "../components"
+import "../services"
 
 Item {
     id: root
 
-    property string openPanel: "" // "island", "volume", "network", "controlcenter"
+    property alias openPanel: spatialSurface.activeControl
 
     function closeAllPanels() {
-        openPanel = "";
+        spatialSurface.close();
     }
 
     implicitWidth: 1920
-    implicitHeight: Tokens.barHeight + Tokens.barTopMargin
+    implicitHeight: spatialSurface.isOpen ? (spatialSurface.targetHeight + Tokens.barTopMargin + 20) : (Tokens.barHeight + Tokens.barTopMargin)
 
-    // Fullscreen non-blocking dismiss layer when any panel is open
-    MouseArea {
-        id: outsideDismiss
-        anchors.fill: parent
-        z: 90
-        visible: root.openPanel !== ""
-        onClicked: root.closeAllPanels()
-    }
-
-    // Main Floating Top Bar Capsule
+    // ── 1. Compact Resting Top Bar Capsule ─────────────────────────────────
     Rectangle {
         id: barCapsule
         anchors.top: parent.top
@@ -42,7 +36,7 @@ Item {
         anchors.rightMargin: Tokens.barSideMargin
         height: Tokens.barHeight
         radius: height / 2
-        z: 100
+        z: 50
 
         // Glass Substrate styling
         color: Tokens.surfaceGlass
@@ -61,7 +55,7 @@ Item {
             color: Tokens.specularRim
         }
 
-        // ── 1. Left Cluster (Logo + Workspaces) ──────────────────────────
+        // ── Left Cluster (Logo + Workspaces) ───────────────────────────
         Row {
             id: leftCluster
             anchors.left: parent.left
@@ -71,6 +65,7 @@ Item {
 
             // Official Nex Mark
             Rectangle {
+                id: logoTrigger
                 width: 28
                 height: 28
                 radius: 14
@@ -90,8 +85,7 @@ Item {
                     hoverEnabled: true
                     cursorShape: Qt.PointingHandCursor
                     onClicked: {
-                        // Quick toggle island
-                        root.openPanel = (root.openPanel === "island") ? "" : "island";
+                        spatialSurface.toggle("island", centerIsland, 360, 260);
                     }
                 }
             }
@@ -102,19 +96,19 @@ Item {
             }
         }
 
-        // ── 2. Geometrically Centered Floating Island ────────────────────
+        // ── Geometrically Centered Floating Island ─────────────────────
         // Stable centering: strictly anchored to parent.horizontalCenter
         FloatingIsland {
             id: centerIsland
             anchors.horizontalCenter: parent.horizontalCenter
             anchors.verticalCenter: parent.verticalCenter
-            expanded: root.openPanel === "island"
+            expanded: spatialSurface.activeControl === "island"
             onClicked: {
-                root.openPanel = (root.openPanel === "island") ? "" : "island";
+                spatialSurface.toggle("island", centerIsland, 360, 260);
             }
         }
 
-        // ── 3. Right Cluster (System Status & Quick Toggles) ─────────────
+        // ── Right Cluster (System Status & Quick Toggles) ──────────────
         StatusCluster {
             id: rightCluster
             anchors.right: parent.right
@@ -122,71 +116,22 @@ Item {
             anchors.verticalCenter: parent.verticalCenter
 
             onVolumeTriggered: {
-                root.openPanel = (root.openPanel === "volume") ? "" : "volume";
+                spatialSurface.toggle("sound", rightCluster.volumeChipItem, AudioService.panelWidth, AudioService.panelHeight);
             }
             onNetworkTriggered: {
-                root.openPanel = (root.openPanel === "network") ? "" : "network";
+                spatialSurface.toggle("controlcenter", rightCluster.controlCenterChipItem, 380, 420);
             }
             onControlCenterTriggered: {
-                root.openPanel = (root.openPanel === "controlcenter") ? "" : "controlcenter";
+                spatialSurface.toggle("controlcenter", rightCluster.controlCenterChipItem, 380, 420);
             }
         }
     }
 
-    // ── 4. Origin Expansion Panels ───────────────────────────────────────
-    // A. Island Expanded Panel
-    OriginExpansion {
-        id: islandExpansion
-        triggerItem: centerIsland
-        opened: root.openPanel === "island"
-        panelWidth: 350
-        panelHeight: 250
-        parentWidth: root.width
-        z: 200
-        onDismissed: { if (root.openPanel === "island") root.openPanel = ""; }
-
-        IslandExpandedPanel {}
-    }
-
-    // B. Volume Panel
-    OriginExpansion {
-        id: volumeExpansion
-        triggerItem: rightCluster.volumeChipItem
-        opened: root.openPanel === "volume"
-        panelWidth: 320
-        panelHeight: 180
-        parentWidth: root.width
-        z: 200
-        onDismissed: { if (root.openPanel === "volume") root.openPanel = ""; }
-
-        VolumePanel {}
-    }
-
-    // C. Network Panel
-    OriginExpansion {
-        id: networkExpansion
-        triggerItem: rightCluster.networkChipItem
-        opened: root.openPanel === "network"
-        panelWidth: 320
-        panelHeight: 220
-        parentWidth: root.width
-        z: 200
-        onDismissed: { if (root.openPanel === "network") root.openPanel = ""; }
-
-        NetworkPanel {}
-    }
-
-    // D. Control Center Panel
-    OriginExpansion {
-        id: ccExpansion
-        triggerItem: rightCluster.controlCenterChipItem
-        opened: root.openPanel === "controlcenter"
-        panelWidth: 360
-        panelHeight: 380
-        parentWidth: root.width
-        z: 200
-        onDismissed: { if (root.openPanel === "controlcenter") root.openPanel = ""; }
-
-        ControlCenterPanel {}
+    // ── 2. Native Morphing Spatial Capsule Surface ─────────────────────────
+    // Expands outward both horizontally and vertically directly from the clicked control's origin
+    SpatialCapsuleSurface {
+        id: spatialSurface
+        anchors.fill: parent
+        z: 100
     }
 }

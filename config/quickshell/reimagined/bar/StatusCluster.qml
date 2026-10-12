@@ -8,16 +8,16 @@
 import QtQuick
 import "../tokens"
 import "../motion"
+import "../services"
 
 Item {
     id: root
 
-    property real volumeLevel: 0.70
     property string networkSsid: "Nex-Air"
     property int batteryPercentage: 92
     property string currentTime: "10:58 AM"
 
-    // Trigger item aliases for OriginExpansion panels
+    // Trigger item aliases for SpatialCapsuleSurface
     property alias volumeChipItem: volChip
     property alias networkChipItem: netChip
     property alias controlCenterChipItem: ccChip
@@ -44,7 +44,7 @@ Item {
         anchors.verticalCenter: parent.verticalCenter
         spacing: Tokens.s1
 
-        // Volume Chip
+        // Volume Chip bound to live AudioService
         Rectangle {
             id: volChip
             height: 24
@@ -60,18 +60,18 @@ Item {
                 spacing: 4
 
                 Text {
-                    text: "󰕾"
+                    text: AudioService.icon
                     font.family: Tokens.fontMono
                     font.pixelSize: Tokens.tSmall
-                    color: Tokens.textPrimary
+                    color: AudioService.muted ? Tokens.danger : (volMouse.containsMouse ? Tokens.accent : Tokens.textPrimary)
                 }
 
                 Text {
-                    text: Math.round(root.volumeLevel * 100) + "%"
+                    text: AudioService.muted ? "Mute" : (AudioService.volume + "%")
                     font.family: Tokens.fontMono
                     font.pixelSize: Tokens.tCaption
                     font.weight: Tokens.weightMedium
-                    color: Tokens.textSecondary
+                    color: AudioService.muted ? Tokens.danger : Tokens.textSecondary
                 }
             }
 

@@ -1,8 +1,15 @@
 TopBar 1.0 TopBar.qml
+SpatialCapsuleSurface 1.0 SpatialCapsuleSurface.qml
 FloatingIsland 1.0 FloatingIsland.qml
 WorkspacesIndicator 1.0 WorkspacesIndicator.qml
 StatusCluster 1.0 StatusCluster.qml
+SoundDetail 1.0 SoundDetail.qml
+SliderRow 1.0 SliderRow.qml
+LevelRow 1.0 LevelRow.qml
+DetailHeading 1.0 DetailHeading.qml
+DetailSection 1.0 DetailSection.qml
+DetailChoice 1.0 DetailChoice.qml
 IslandExpandedPanel 1.0 IslandExpandedPanel.qml
+ControlCenterPanel 1.0 ControlCenterPanel.qml
 VolumePanel 1.0 VolumePanel.qml
 NetworkPanel 1.0 NetworkPanel.qml
-ControlCenterPanel 1.0 ControlCenterPanel.qml
