@@ -53,9 +53,9 @@ Singleton {
             root.commitsBehind = 3
             root.remoteCommit = "simulated"
             root.remoteVersion = root.localVersion.length > 0 ? root.localVersion + "+1" : ""
-            root.commitLog = ["a1b2c3d|feat(iris): a pending update to look at|1 hour ago|iNiR",
-                "e4f5a6b|fix(bar): a fix that comes with it|2 hours ago|iNiR",
-                "c7d8e9f|chore: one more commit|3 hours ago|iNiR"].join("\n")
+            root.commitLog = ["a1b2c3d|feat(iris): a pending update to look at|1 hour ago|NexUI",
+                "e4f5a6b|fix(bar): a fix that comes with it|2 hours ago|NexUI",
+                "c7d8e9f|chore: one more commit|3 hours ago|NexUI"].join("\n")
             root.latestMessage = "a1b2c3d feat(iris): a pending update to look at"
             root.hasUpdate = true
         }
@@ -165,8 +165,8 @@ Singleton {
         ? "Updates Managed Externally"
         : "Updates Unavailable"
     readonly property string unavailableMessage: managedExternally
-        ? "This iNiR installation is managed outside the runtime copy. Use your package manager or installation workflow to update it."
-        : "Repository not found. The update system cannot locate the iNiR git repository."
+        ? "This NexUI installation is managed outside the runtime copy. Use your package manager or installation workflow to update it."
+        : "Repository not found. The update system cannot locate the NexUI git repository."
     readonly property string unavailableHint: managedExternally
         ? "Runtime diagnostics are still available, but in-shell self-update is disabled for this installation mode."
         : "Run './setup doctor' in your terminal to diagnose the issue, or use the diagnose command below."
@@ -193,7 +193,7 @@ Singleton {
         if (!hasUpdate || !available || !initialUpdateCheckDone || isDismissed) return
         if (remoteCommit.length === 0) return
         if (root.simulated) {
-            root.postUpdateNotice("iNiR Update Available (simulated)", "3 commits behind.")
+            root.postUpdateNotice("NexUI Update Available (simulated)", "3 commits behind.")
             return
         }
         const now = Date.now()
@@ -204,10 +204,10 @@ Singleton {
 
         const version = root.remoteVersion.length > 0 ? (" v" + root.remoteVersion) : ""
         const commits = root.repoDiverged
-            ? "Repository history changed upstream. iNiR will preserve local work and recover clean published checkouts automatically."
+            ? "Repository history changed upstream. NexUI will preserve local work and recover clean published checkouts automatically."
             : (root.commitsBehind > 0 ? (root.commitsBehind + " commits behind") : "New version available")
-        root.postUpdateNotice("iNiR Update Available" + version,
-            commits + ". Run `inir update`, or open it from the shell's own updater.")
+        root.postUpdateNotice("NexUI Update Available" + version,
+            commits + ". Run `nexui update`, or open it from the shell's own updater.")
         Config.setNestedValues({
             "shellUpdates.lastNotifiedCommit": remoteCommit,
             "shellUpdates.lastNotifiedAt": now
@@ -357,7 +357,7 @@ Singleton {
             const termBin = (termSlot.length > 0 ? termSlot : "kitty").trim().split(/\s+/)[0]
             ShellExec.execDetachedArgs(
                 [termBin, "-e", "/usr/bin/bash", "-c", bashCmd],
-                "Update iNiR", repoDir)
+                "Update NexUI", repoDir)
             print("[ShellUpdates] Update launched in terminal (" + termBin + ") from: " + repoDir)
         } else {
             // Detached background — same path as before the terminal toggle existed.
@@ -894,7 +894,7 @@ Singleton {
                 // Notify after 3 consecutive failures (persistent problem)
                 if (root.consecutiveFetchErrors >= 3 && !root.fetchErrorNotificationShown) {
                     root.fetchErrorNotificationShown = true
-                    const title = "iNiR Update Check Failed"
+                    const title = "NexUI Update Check Failed"
                     const body = "Cannot reach remote repository. Check your internet connection or run './setup doctor'."
                     Notifications.send(title, body, "low", 8000)
                     print("[ShellUpdates] Notification sent: Persistent fetch errors")

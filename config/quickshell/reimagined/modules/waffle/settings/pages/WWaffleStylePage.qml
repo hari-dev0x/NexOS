@@ -52,7 +52,7 @@ WSettingsPage {
             currentValue: NiriKeybinds.altTabSource
             options: [
                 { value: "niri", displayName: Translation.tr("Niri's Recent Windows") },
-                { value: "inir", displayName: Translation.tr("iNiR switcher") }
+                { value: "inir", displayName: Translation.tr("NexUI switcher") }
             ]
             onSelected: newValue => NiriKeybinds.setAltTabSource(newValue)
         }

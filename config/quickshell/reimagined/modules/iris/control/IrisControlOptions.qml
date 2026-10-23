@@ -259,7 +259,7 @@ QtObject {
     }
 
     readonly property var presets: [
-        { id: "iris", label: "iRiS", description: "Connections beside the player, quiet tiles beside slim sliders.",
+        { id: "iris", label: "NexUI", description: "Connections beside the player, quiet tiles beside slim sliders.",
             columns: 4, labels: true, controls: "tiles",
             modules: root.shippedModules, sizes: root.shippedSizes,
             platter: ["network", "bluetooth", "focus", "gameMode"], levels: ["brightness", "volume", "microphone"] },

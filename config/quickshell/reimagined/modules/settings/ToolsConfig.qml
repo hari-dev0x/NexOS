@@ -556,7 +556,7 @@ ContentPage {
                     visible: root.recordingAudioMode === "both"
                     materialIcon: root.audioMixAvailable ? "instant_mix" : "warning"
                     text: root.audioMixAvailable
-                        ? Translation.tr("iNiR combines system audio and microphone automatically. The temporary audio route is removed when recording ends.")
+                        ? Translation.tr("NexUI combines system audio and microphone automatically. The temporary audio route is removed when recording ends.")
                         : Translation.tr("System and microphone audio cannot be combined on this setup. Recording will continue with whichever source is available.")
                 }
 
@@ -911,7 +911,7 @@ ContentPage {
                     checked: Config.options?.regionSelector?.japaneseLookup?.enabled ?? true
                     onCheckedChanged: Config.setNestedValue("regionSelector.japaneseLookup.enabled", checked)
                     StyledToolTip {
-                        text: Translation.tr("After Japanese OCR, iNiR finds a useful word in the captured text and opens a local dictionary card. Expand the card to inspect the full OCR text and translation.")
+                        text: Translation.tr("After Japanese OCR, NexUI finds a useful word in the captured text and opens a local dictionary card. Expand the card to inspect the full OCR text and translation.")
                     }
                 }
 
@@ -943,7 +943,7 @@ ContentPage {
                                 Layout.fillWidth: true
                                 text: JapaneseDictionary.jitendexInstalled
                                     ? Translation.tr("Jitendex is indexed locally; dictionary lookups work offline.")
-                                    : Translation.tr("Install Jitendex once. iNiR downloads and indexes it automatically; you do not need to find or import a ZIP.")
+                                    : Translation.tr("Install Jitendex once. NexUI downloads and indexes it automatically; you do not need to find or import a ZIP.")
                                 color: Appearance.colors.colSubtext
                                 font.pixelSize: Appearance.font.pixelSize.small
                                 wrapMode: Text.WordWrap
@@ -1140,7 +1140,7 @@ ContentPage {
 
                 StyledText {
                     Layout.fillWidth: true
-                    text: Translation.tr("These are optional Anki decks from their original upstream projects. iNiR downloads the latest .apkg to Downloads and opens it for import; the deck files are not bundled with iNiR.")
+                    text: Translation.tr("These are optional Anki decks from their original upstream projects. NexUI downloads the latest .apkg to Downloads and opens it for import; the deck files are not bundled with NexUI.")
                     color: Appearance.colors.colSubtext
                     wrapMode: Text.WordWrap
                 }

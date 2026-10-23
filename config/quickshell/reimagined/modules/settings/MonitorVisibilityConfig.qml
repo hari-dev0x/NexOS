@@ -52,7 +52,7 @@ ContentPage {
         { title: Translation.tr("Media controls"), description: Translation.tr("Floating player popup opened from the bar or IPC"), selectionLabel: Translation.tr("Enabled outputs"), icon: "music_note", path: "media.screenList" }
     ]
     readonly property var irisSurfaces: [
-        { title: Translation.tr("iRiS bar"), description: Translation.tr("Minimal iRiS bar; an empty list shows it on every connected output"), icon: "visibility", path: "iris.bar.screenList" }
+        { title: Translation.tr("NexUI Island bar"), description: Translation.tr("Minimal NexUI Island bar; an empty list shows it on every connected output"), icon: "visibility", path: "iris.bar.screenList" }
     ]
     readonly property var sharedSurfaces: [
         { title: Translation.tr("Notification popups"), description: Translation.tr("Transient notification toasts"), icon: "notifications", path: "notifications.screenList" },
@@ -1382,7 +1382,7 @@ ContentPage {
             NoticeBox {
                 Layout.fillWidth: true
                 materialIcon: "info"
-                text: Translation.tr("Primary monitor controls iNiR's fallback output. Resolution, scale, rotation and advanced display options remain available in Compositor settings.")
+                text: Translation.tr("Primary monitor controls NexUI's fallback output. Resolution, scale, rotation and advanced display options remain available in Compositor settings.")
             }
 
             ContentSubsection {
@@ -1473,7 +1473,7 @@ ContentPage {
             NoticeBox {
                 Layout.fillWidth: true
                 materialIcon: "visibility"
-                text: Translation.tr("iRiS keeps its monitor contract small: only the bar is selectable. Background remains per-output; transient iRiS surfaces follow focus.")
+                text: Translation.tr("NexUI Island keeps its monitor contract small: only the bar is selectable. Background remains per-output; transient NexUI surfaces follow focus.")
             }
 
             PresetActions {
@@ -1538,7 +1538,7 @@ ContentPage {
             NoticeBox {
                 Layout.fillWidth: true
                 materialIcon: "merge"
-                text: Translation.tr("These monitor lists apply to Material and Waffle. iRiS keeps one transient popup on the focused output to reduce residency.")
+                text: Translation.tr("These monitor lists apply to Material and Waffle. NexUI Island keeps one transient popup on the focused output to reduce residency.")
             }
 
             PresetActions {

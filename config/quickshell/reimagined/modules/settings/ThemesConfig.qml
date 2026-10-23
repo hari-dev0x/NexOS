@@ -1637,7 +1637,7 @@ ContentPage {
                         { displayName: Translation.tr("Material"), icon: "tune", value: "material" },
                         { displayName: Translation.tr("Cards"), icon: "branding_watermark", value: "cards" },
                         { displayName: Translation.tr("Aurora"), icon: "blur_on", value: "aurora" },
-                        { displayName: Translation.tr("Inir"), icon: "terminal", value: "inir" },
+                        { displayName: Translation.tr("NexUI"), icon: "terminal", value: "inir" },
                         { displayName: Translation.tr("Angel"), icon: "raven", value: "angel" },
                         { displayName: Translation.tr("Regalia"), icon: "event_seat", value: "regalia" },
                         { displayName: Translation.tr("ZZZ"), icon: "bolt", value: "zzz" },

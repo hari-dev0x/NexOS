@@ -95,7 +95,7 @@ ContentPage {
             ConfigSelectionArray {
                 options: [
                     { displayName: Translation.tr("Niri's Recent Windows"), icon: "view_carousel", value: "niri" },
-                    { displayName: Translation.tr("iNiR switcher"), icon: "keyboard_tab", value: "inir" }
+                    { displayName: Translation.tr("NexUI switcher"), icon: "keyboard_tab", value: "inir" }
                 ]
                 currentValue: NiriKeybinds.altTabSource
                 onSelected: newValue => NiriKeybinds.setAltTabSource(newValue)
@@ -105,7 +105,7 @@ ContentPage {
                 materialIcon: "info"
                 text: NiriKeybinds.altTabSource === "custom"
                     ? Translation.tr("Alt+Tab is bound in your own Niri binds. Choosing here takes it over; your line stays as it is.")
-                    : Translation.tr("Which window switcher Alt+Tab opens. Niri's shows live previews of every window; iNiR's follows your panel style.")
+                    : Translation.tr("Which window switcher Alt+Tab opens. Niri's shows live previews of every window; NexUI's follows your panel style.")
             }
         }
     }

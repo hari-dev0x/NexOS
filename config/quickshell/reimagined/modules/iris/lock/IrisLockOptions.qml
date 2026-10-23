@@ -48,7 +48,7 @@ QtObject {
     }
 
     readonly property var presets: [
-        { id: "iris", label: "iRiS", description: "The clock and the day up top, the player and the sign-in below.",
+        { id: "iris", label: "NexUI", description: "The clock and the day up top, the player and the sign-in below.",
             type: { clockSize: 112, clockWeight: 700 },
             blocks: { clock: { enable: true, zone: "top", style: "stack" }, glance: { enable: true, zone: "top" }, media: { enable: true, zone: "bottom", style: "card" },
                 activity: { enable: true, zone: "top" }, session: { enable: true, zone: "bottom" }, status: { enable: false, zone: "topRight" } } },

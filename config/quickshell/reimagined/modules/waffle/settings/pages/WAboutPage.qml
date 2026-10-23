@@ -101,7 +101,7 @@ WSettingsPage {
                         implicitHeight: 24
                         radius: Looks.radius.small
                         color: Looks.colors.bg2
-                        
+
                         WText {
                             id: compLabel
                             anchors.centerIn: parent
@@ -117,11 +117,27 @@ WSettingsPage {
                         implicitHeight: 24
                         radius: Looks.radius.small
                         color: Looks.colors.bg2
-                        
+
                         WText {
                             id: fwLabel
                             anchors.centerIn: parent
                             text: "Qt 6"
+                            font.pixelSize: Looks.font.pixelSize.small
+                            color: Looks.colors.subfg
+                        }
+                    }
+
+                    // Animation Renderer badge
+                    Rectangle {
+                        implicitWidth: animLabel.implicitWidth + 16
+                        implicitHeight: 24
+                        radius: Looks.radius.small
+                        color: Looks.colors.bg2
+
+                        WText {
+                            id: animLabel
+                            anchors.centerIn: parent
+                            text: "NexFlow"
                             font.pixelSize: Looks.font.pixelSize.small
                             color: Looks.colors.subfg
                         }
@@ -229,7 +245,7 @@ WSettingsPage {
         WSettingsRow {
             label: Translation.tr("Panel family")
             description: Config.options?.panelFamily === "waffle" ? "Waffle (Windows 11)"
-                : Config.options?.panelFamily === "iris" ? "iRiS" : "ii (Material)"
+                : Config.options?.panelFamily === "iris" ? "NexUI Island" : "ii (Material)"
             icon: "app-generic"
         }
     }

@@ -31,7 +31,7 @@ Singleton {
                 GlobalStates.setWidgetEditMode(true)
                 GlobalStates.desktopWidgetManagerToggleRequested(screen)
             } },
-        { id: "customize", group: 0, label: Translation.tr("Customize iRiS"), glyph: "palette", tint: "purple",
+        { id: "customize", group: 0, label: Translation.tr("Customize NexUI"), glyph: "palette", tint: "purple",
             run: screen => GlobalStates.openIrisCustomize("") },
         { id: "nextWallpaper", group: 0, label: Translation.tr("Next wallpaper"), glyph: "shuffle", tint: "pink",
             run: screen => Wallpapers.nextWallpaper(Appearance.m3colors.darkmode, screen) },

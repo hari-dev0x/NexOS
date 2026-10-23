@@ -117,6 +117,6 @@ QuickToggleButton {
     Component.onCompleted: root.refreshStatus()
 
     StyledToolTip {
-        text: Translation.tr("Hotspot: %1").arg(Config.options?.hotspot?.ssid ?? "iNiR Hotspot")
+        text: Translation.tr("Hotspot: %1").arg(Config.options?.hotspot?.ssid ?? "NexUI Hotspot")
     }
 }

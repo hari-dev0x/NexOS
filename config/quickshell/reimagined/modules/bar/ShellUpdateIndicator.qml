@@ -188,7 +188,7 @@ MouseArea {
 
                     StyledText {
                         anchors.verticalCenter: parent.verticalCenter
-                        text: ShellUpdates.isUpdating ? Translation.tr("Updating...") : Translation.tr("iNiR Update")
+                        text: ShellUpdates.isUpdating ? Translation.tr("Updating...") : Translation.tr("NexUI Update")
                         font {
                             weight: Font.Medium
                             pixelSize: Appearance.font.pixelSize.normal

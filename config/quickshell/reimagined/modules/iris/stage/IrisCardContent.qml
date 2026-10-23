@@ -839,7 +839,7 @@ Item {
                 glyph: "rocket_launch"
                 tint: IrisStyle.secondaryAccent
                 title: ShellUpdates.remoteVersion.length > 0
-                    ? Translation.tr("iNiR %1").arg(ShellUpdates.remoteVersion) : Translation.tr("New iNiR")
+                    ? Translation.tr("NexUI %1").arg(ShellUpdates.remoteVersion) : Translation.tr("New NexUI")
                 detail: ShellUpdates.repoDiverged
                     ? Translation.tr("Upstream history changed; your local work is kept")
                     : ShellUpdates.commitsBehind > 0

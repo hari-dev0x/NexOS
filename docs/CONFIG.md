@@ -131,3 +131,25 @@ When GameMode activates (`gamemoded` signals a running 3D title):
 - Desktop blur shaders are instantly bypassed.
 - Heavy background polling is suspended.
 - Topbar enters minimal mode to yield 100% GPU frame budget to the game.
+
+### E. NexFlow Animation Renderer (`iris.appearance.morph` & Niri Motion)
+
+**NexFlow** controls window motion transitions, spring damping curves, and surface morphing across NexUI and Niri:
+
+- **Surface Morphing (`iris.appearance.morph` in `config.json`):**
+  Controls how the LivingBar capsule and Island surfaces morph and settle:
+  - `"direct"`: Fast direct tracking with natural settling.
+  - `"liquid"`: Fluid organic expansion with dynamic corner radii.
+  - `"glide"`: Smooth, decelerating translation.
+  - `"snap"`: Crisp, low-latency immediate docking.
+  - `"elastic"`: Playful spring oscillations on size change.
+  - `"instant"`: Zero-duration transitions for high-framerate responsiveness.
+
+- **Niri Window Motion Timing (`~/.config/niri/config.d/60-animations.kdl`):**
+  Managed through the NexFlow Animation Renderer presets (`nexui niriAnimations apply <id>`):
+  - `snappy`: Default crisp spring settling (`damping-ratio=1.0, stiffness=1000`).
+  - `niri`: Niri compositor standard cubic-bezier & spring timing.
+  - `material`: Android/Material Design 3 easing curves (`0.05, 0.7, 0.1, 1.0`).
+  - `bouncy`: Expressive spring curve with subtle overshoot (`damping-ratio=0.85`).
+  - `gentle`: Relaxed, cinematic high-damping deceleration.
+  - `instant`: Ultra-low latency cuts with all motion durations set to zero.

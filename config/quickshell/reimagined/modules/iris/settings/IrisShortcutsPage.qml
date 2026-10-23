@@ -31,11 +31,11 @@ Flickable {
     ScrollBar.vertical: IrisScrollBar {}
 
     function displayCategoryName(name: string): string {
-        return name === "ii Shell" ? Translation.tr("iNiR Shell") : name
+        return name === "ii Shell" || name === "iNiR Shell" ? Translation.tr("NexUI Shell") : name
     }
     function categoryGlyph(name: string): string {
         const glyphs = {
-            "System": "settings_power", "ii Shell": "auto_awesome", "iNiR Shell": "auto_awesome",
+            "System": "settings_power", "ii Shell": "auto_awesome", "iNiR Shell": "auto_awesome", "NexUI Shell": "auto_awesome",
             "Window Switcher": "swap_horiz", "Screenshots": "screenshot_region", "Applications": "apps",
             "Window Management": "web_asset", "Focus": "center_focus_strong", "Move Windows": "open_with",
             "Workspaces": "grid_view", "Media": "volume_up", "Brightness": "light_mode",
@@ -46,7 +46,7 @@ Flickable {
     }
     function categoryTint(name: string): color {
         const tints = {
-            "System": "gray", "ii Shell": "purple", "iNiR Shell": "purple", "Window Switcher": "indigo",
+            "System": "gray", "ii Shell": "purple", "iNiR Shell": "purple", "NexUI Shell": "purple", "Window Switcher": "indigo",
             "Screenshots": "orange", "Region Tools": "orange", "Applications": "blue", "Window Management": "sky",
             "Focus": "teal", "Move Windows": "green", "Workspaces": "indigo", "Media": "pink",
             "Brightness": "yellow", "Layout": "lavender", "Resize": "red", "Monitors": "blue", "Other": "gray"

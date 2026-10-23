@@ -460,7 +460,7 @@ ContentPage {
         SettingsGroup {
             StyledText {
                 Layout.fillWidth: true
-                text: Translation.tr("Settings for switching between Material ii, Waffle, and iRiS panel families.")
+                text: Translation.tr("Settings for switching between Material ii, Waffle, and NexUI Island panel families.")
                 color: Appearance.colors.colSubtext
                 font.pixelSize: Appearance.font.pixelSize.small
                 wrapMode: Text.WordWrap
@@ -557,7 +557,7 @@ ContentPage {
             ConfigSelectionArray {
                 options: [
                     { displayName: Translation.tr("Niri's Recent Windows"), icon: "view_carousel", value: "niri" },
-                    { displayName: Translation.tr("iNiR switcher"), icon: "keyboard_tab", value: "inir" }
+                    { displayName: Translation.tr("NexUI switcher"), icon: "keyboard_tab", value: "inir" }
                 ]
                 currentValue: NiriKeybinds.altTabSource
                 onSelected: newValue => NiriKeybinds.setAltTabSource(newValue)

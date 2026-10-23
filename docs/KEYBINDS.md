@@ -12,14 +12,14 @@ This document provides a comprehensive cheat sheet of keyboard shortcuts for the
 | Shortcut | Action | Description |
 | :--- | :--- | :--- |
 | <kbd>Mod</kbd> + <kbd>Space</kbd> | **Application Launcher / Overview** | Opens the fuzzy-search application launcher with categories. |
-| <kbd>Mod</kbd> + <kbd>D</kbd> | **Control Center** | Toggles the Iris Control Center overlay with quick settings. |
+| <kbd>Mod</kbd> + <kbd>D</kbd> | **Control Center** | Toggles the NexUI Control Center overlay with quick settings. |
 | <kbd>Mod</kbd> + <kbd>S</kbd> / <kbd>Mod</kbd> + <kbd>,</kbd> | **NexUI Settings** | Opens the desktop shell settings manager. |
 | <kbd>Mod</kbd> + <kbd>Escape</kbd> / <kbd>Mod</kbd> + <kbd>Shift</kbd> + <kbd>Q</kbd> | **Session & Power Menu** | Toggles lock, suspend, reboot, poweroff, and logout actions. |
 | <kbd>Mod</kbd> + <kbd>V</kbd> | **Clipboard Manager** | Opens the visual clipboard history search and paste popup. |
 | <kbd>Super</kbd> + <kbd>G</kbd> | **Overlay Toggle** | Toggles full-screen desktop dashboard / widgets overlay. |
 | <kbd>Mod</kbd> + <kbd>/</kbd> | **Cheatsheet** | Shows the interactive desktop shortcut cheatsheet. |
 | <kbd>Ctrl</kbd> + <kbd>Alt</kbd> + <kbd>T</kbd> | **Wallpaper Selector** | Opens the visual wallpaper gallery picker. |
-| <kbd>Mod</kbd> + <kbd>Shift</kbd> + <kbd>W</kbd> | **Cycle Panel Family** | Cycles between Iris, Waffle, and II shell panel designs. |
+| <kbd>Mod</kbd> + <kbd>Shift</kbd> + <kbd>W</kbd> | **Cycle Panel Family** | Cycles between NexUI Island, Waffle, and II shell panel designs. |
 | <kbd>Ctrl</kbd> + <kbd>Alt</kbd> + <kbd>F</kbd> | **Audio Equalizer** | Opens PipeWire / EasyEffects audio equalizer controls. |
 | <kbd>Ctrl</kbd> + <kbd>Mod</kbd> + <kbd>Shift</kbd> + <kbd>R</kbd> | **Restart Desktop Shell** | Cleanly restarts `nexui.service` and Quickshell instance. |
 

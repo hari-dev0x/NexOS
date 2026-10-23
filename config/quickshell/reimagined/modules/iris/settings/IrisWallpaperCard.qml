@@ -42,7 +42,7 @@ ClippingRectangle {
             : hour < 19 ? Translation.tr("Good afternoon,") : Translation.tr("Good evening,")
     }
     readonly property string facts: [
-        ShellUpdates.localVersion.length > 0 ? "iNiR " + ShellUpdates.localVersion : "iNiR",
+        ShellUpdates.localVersion.length > 0 ? "NexUI " + ShellUpdates.localVersion : "NexUI",
         SystemInfo.distroName !== "Unknown" ? SystemInfo.distroName : "",
         card.screen ? `${desk.screenW} × ${desk.screenH}` : ""
     ].filter(part => part.length > 0).join("  ·  ")

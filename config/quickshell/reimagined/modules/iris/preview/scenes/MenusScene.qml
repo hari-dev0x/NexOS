@@ -71,7 +71,7 @@ PreviewScene {
                 model: [
                     { sep: true },
                     { glyph: "widgets", text: Translation.tr("Edit widgets"), tint: "teal", lit: true },
-                    { glyph: "palette", text: Translation.tr("Customize iRiS"), tint: "purple" },
+                    { glyph: "palette", text: Translation.tr("Customize NexUI"), tint: "purple" },
                     { sep: true },
                     { glyph: "settings", text: Translation.tr("Settings"), tint: "gray" },
                     { glyph: "restart_alt", text: Translation.tr("Restart shell"), tint: "gray" }

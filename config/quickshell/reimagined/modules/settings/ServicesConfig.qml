@@ -494,12 +494,12 @@ ContentPage {
         settingsTaskSection: "updates"
         expanded: false
         icon: "deployed_code_update"
-        title: Translation.tr("iNiR Shell Updates")
+        title: Translation.tr("NexUI Shell Updates")
 
         SettingsGroup {
             StyledText {
                 Layout.fillWidth: true
-                text: Translation.tr("Automatically checks the iNiR git repository for new versions and shows a notification in the bar.")
+                text: Translation.tr("Automatically checks the NexUI git repository for new versions and shows a notification in the bar.")
                 color: Appearance.colors.colOnSurfaceVariant
                 font.pixelSize: Appearance.font.pixelSize.small
                 wrapMode: Text.WordWrap
@@ -522,7 +522,7 @@ ContentPage {
                 onValueChanged: Config.setNestedValue("shellUpdates.checkIntervalMinutes", value)
                 enabled: Config.options?.shellUpdates?.enabled ?? true
                 StyledToolTip {
-                    text: Translation.tr("How often to check for iNiR updates (in minutes). Default: 360 (6 hours)")
+                    text: Translation.tr("How often to check for NexUI updates (in minutes). Default: 360 (6 hours)")
                 }
             }
 

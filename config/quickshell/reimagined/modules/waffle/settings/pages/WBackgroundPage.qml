@@ -1122,7 +1122,7 @@ WSettingsPage {
             label: Translation.tr("Transition style")
             icon: "arrow-sync"
             description: root.wallpaperTransitionIsShader
-                ? Translation.tr("Rendered by iNiR so both wallpapers stay synchronized during the shader effect")
+                ? Translation.tr("Rendered by NexUI so both wallpapers stay synchronized during the shader effect")
                 : Translation.tr("Rendered by AWWW using the same effect for previews and final wallpaper changes")
             currentValue: root.wallpaperTransitionUiType
             options: [
@@ -1153,7 +1153,7 @@ WSettingsPage {
                 { value: "glitch", displayName: Translation.tr("Glitch") },
                 { value: "ripple", displayName: Translation.tr("Ripple") },
                 { value: "shatter", displayName: Translation.tr("Shatter") },
-                { value: "inirMelt", displayName: Translation.tr("iNiR Melt") },
+                { value: "inirMelt", displayName: Translation.tr("NexUI Melt") },
                 { value: "inirVeil", displayName: Translation.tr("Chromatic Veil") },
                 { value: "inirFracture", displayName: Translation.tr("Glass Fracture") },
                 { value: "inirInk", displayName: Translation.tr("Sumi Wash") },

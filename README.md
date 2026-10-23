@@ -39,6 +39,7 @@
 ## Core Highlights
 
 - **Dynamic Island Topbar**: Continuous compact topbar with a morphing center capsule that adapts fluidly to volume changes, AC charging status, audio playback, and system notifications.
+- **NexFlow Animation Renderer**: Dedicated motion engine synchronizing second-order spring dynamics, fluid capsule morphing, and Niri window movements across six curated presets (*Snappy*, *Niri*, *Material*, *Bouncy*, *Gentle*, *Instant*).
 - **Instant Resident Control Center (`SUPER + S`)**: Preloaded control surface providing zero-latency toggles for Wi-Fi, Bluetooth, displays, audio devices, and power profiles.
 - **Centered Floating Launcher (`SUPER + Space`)**: Modern, keyboard-driven application menu with category filter chips (`All`, `Internet`, `Dev`, `Media`, `System`, `Utility`).
 - **Native Compositor Integration**: Clean, modular configuration driving compositor layout, backdrop blur, and custom animation curves.

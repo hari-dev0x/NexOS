@@ -1374,7 +1374,7 @@ ContentPage {
                             case "glitch":       return Translation.tr("Digital glitch displacement between both wallpapers.")
                             case "ripple":       return Translation.tr("Radial ripple distortion carries the old image into the new one.")
                             case "shatter":      return Translation.tr("Fragments the outgoing wallpaper into a shatter transition.")
-                            case "inirMelt":     return Translation.tr("iNiR Melt breaks the outgoing wallpaper into staggered vertical streams with a restrained luminous edge.")
+                            case "inirMelt":     return Translation.tr("NexUI Melt breaks the outgoing wallpaper into staggered vertical streams with a restrained luminous edge.")
                             case "inirVeil":     return Translation.tr("Chromatic Veil sweeps diagonally across the screen with a narrow controlled RGB fringe.")
                             case "inirFracture": return Translation.tr("Glass Fracture shifts large screen fragments outward before resolving cleanly into the next wallpaper.")
                             case "inirInk":      return Translation.tr("Sumi Wash reveals the next wallpaper through an irregular ink-like front with a muted monochrome edge.")
@@ -1446,7 +1446,7 @@ ContentPage {
                         { displayName: Translation.tr("Glitch"), icon: "bug_report", value: "glitch" },
                         { displayName: Translation.tr("Ripple"), icon: "water", value: "ripple" },
                         { displayName: Translation.tr("Shatter"), icon: "broken_image", value: "shatter" },
-                        { displayName: Translation.tr("iNiR Melt"), icon: "waterfall_chart", value: "inirMelt" },
+                        { displayName: Translation.tr("NexUI Melt"), icon: "waterfall_chart", value: "inirMelt" },
                         { displayName: Translation.tr("Chromatic Veil"), icon: "gradient", value: "inirVeil" },
                         { displayName: Translation.tr("Glass Fracture"), icon: "deployed_code", value: "inirFracture" },
                         { displayName: Translation.tr("Sumi Wash"), icon: "ink_highlighter", value: "inirInk" },

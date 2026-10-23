@@ -47,7 +47,7 @@ Scope {
         ? root.requestedFamily : (Config.options?.panelFamily ?? "ii")
     readonly property bool irisFamily: root.family === "iris"
     readonly property bool waffleFamily: root.family === "waffle"
-    readonly property string familyTitle: root.irisFamily ? "iRiS" : root.waffleFamily ? "Waffle" : "Material II"
+    readonly property string familyTitle: root.irisFamily ? "NexUI Island" : root.waffleFamily ? "Waffle" : "Material II"
 
     // Onboarding follows the selected family, independently of ii's Global Style.
     readonly property color welcomeSurfaceRaised: root.irisFamily ? IrisStyle.surface
@@ -715,12 +715,12 @@ Scope {
     readonly property var steps: [
         {
             icon: "waving_hand", title: Translation.tr("Welcome"),
-            headline: Translation.tr("Welcome to iNiR"),
+            headline: Translation.tr("Welcome to NexUI"),
             subtitle: Translation.tr("Pick the desktop you want to start with. The next steps adapt to it.")
         },
         {
             icon: "tune", title: Translation.tr("Starting point"),
-            headline: root.irisFamily ? Translation.tr("Choose an iRiS layout")
+            headline: root.irisFamily ? Translation.tr("Choose a NexUI Island layout")
                 : Translation.tr("Choose your starting setup"),
             subtitle: root.irisFamily
                 ? Translation.tr("Signature, floating, or a full bar.")
@@ -728,7 +728,7 @@ Scope {
         },
         {
             icon: "palette", title: Translation.tr("Appearance"),
-            headline: root.irisFamily ? Translation.tr("Choose an iRiS theme")
+            headline: root.irisFamily ? Translation.tr("Choose a NexUI Island theme")
                 : Translation.tr("Make it yours"),
             subtitle: root.irisFamily
                 ? Translation.tr("Themes set material, shape, type and motion together.")
@@ -1610,7 +1610,7 @@ Scope {
 
                     WelcomeText {
                         visible: root.irisFamily
-                        text: "iRiS"
+                        text: "NexUI Island"
                         font.family: root.welcomeFontTitle
                         font.pixelSize: 28 * IrisStyle.typeScale
                         font.weight: Font.Bold
@@ -1796,7 +1796,7 @@ Scope {
                         }
 
                         WelcomeChoiceRow {
-                            title: "iRiS"
+                            title: "NexUI Island"
                             detail: Translation.tr("Island, pieces and a Dock on any edge.")
                             symbol: "visibility"
                             selected: root.family === "iris"
@@ -2242,7 +2242,7 @@ Scope {
                 }
 
                 WelcomeChoiceRow {
-                    title: "iRiS"
+                    title: "NexUI Island"
                     detail: Translation.tr("Edge-aware Island, movable pieces, Dock, Themes and Studio.")
                     symbol: "visibility"
                     selected: root.family === "iris"
@@ -2719,7 +2719,7 @@ Scope {
 
                 WelcomeText {
                     Layout.fillWidth: true
-                    text: Translation.tr("Choose how much iNiR sets up for your first session.")
+                    text: Translation.tr("Choose how much NexUI sets up for your first session.")
                     font.pixelSize: root.welcomeFontCaption
                     color: root.welcomeSecondaryText
                     wrapMode: Text.WordWrap
@@ -2913,7 +2913,7 @@ Scope {
                     spacing: 8
                     MaterialSymbol { text: "view_compact"; iconSize: 18; color: root.welcomeAccent }
                     WelcomeText {
-                        text: Translation.tr("iRiS layout")
+                        text: Translation.tr("NexUI Island layout")
                         font.family: root.welcomeFontTitle
                         font.pixelSize: root.welcomeFontSection
                         font.weight: Font.Bold

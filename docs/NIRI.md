@@ -15,7 +15,7 @@ NexUI configures Niri through a modular split-file layout in `~/.config/niri/con
 | `30-window-rules.kdl` | Floating rules, default column placements, geometry filters for apps |
 | `40-environment.kdl` | Wayland environment variables (`QT_QPA_PLATFORM=wayland`, etc.) |
 | `50-startup.kdl` | Clean startup hooks and background daemons |
-| `60-animations.kdl` | Bezier curve definitions for window movements and workspace transitions |
+| `60-animations.kdl` | NexFlow animation curve definitions for window movements and workspace transitions |
 | `70-binds.kdl` | Keyboard shortcuts dispatching to NexUI IPC and compositor actions |
 | `80-layer-rules.kdl` | Layer-shell rules (shadows, blur, exclusivity for Quickshell surfaces) |
 | `90-user-extra.kdl` | Reserved for custom user overrides that survive automated updates |
@@ -54,3 +54,17 @@ Unlike traditional grid or manual tiling window managers, Niri arranges windows 
 - **Expel / Consume (<kbd>Mod</kbd> + <kbd>[</kbd> / <kbd>]</kbd>):** Combine multiple windows into a single tabbed/stacked column or expel them into independent columns.
 - **Preset Widths (<kbd>Mod</kbd> + <kbd>R</kbd>):** Cycle column width between standard proportions (1/3, 1/2, 2/3, full).
 - **Workspace Navigation (<kbd>Mod</kbd> + <kbd>1</kbd> .. <kbd>9</kbd>):** Switch between independent horizontal ribbons.
+
+---
+
+## 5. NexFlow Window Motion Integration
+
+The **NexFlow** animation renderer maps directly to Niri's animation subsystem in `60-animations.kdl`. NexUI provides switchable motion profiles:
+- **Snappy:** Aggressive spring settling for responsive window management.
+- **Niri:** Standard balanced compositor spring and cubic-bezier timing.
+- **Material:** Smooth cubic-bezier deceleration curves.
+- **Bouncy:** Elastic overshoot for fluid visual feedback.
+- **Gentle:** Elegant, high-damping easing for presentation and relaxed environments.
+- **Instant:** Disables motion for latency-critical or low-power scenarios.
+
+Presets can be configured in NexUI Settings under **Niri › NexFlow Animation Style** (or **Windows › Movement** in Iris settings) and via CLI (`nexui niriAnimations apply <id>`).

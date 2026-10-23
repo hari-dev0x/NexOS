@@ -314,10 +314,10 @@ Singleton {
             ]}]
         },
         {
-            name: "iNiR Shell",
+            name: "NexUI Shell",
             children: [{ keybinds: [
-                { mods: ["Super"], key: "Space", comment: "iNiR Overview" },
-                { mods: ["Super"], key: "G", comment: "iNiR Overlay" },
+                { mods: ["Super"], key: "Space", comment: "NexUI Overview" },
+                { mods: ["Super"], key: "G", comment: "NexUI Overlay" },
                 { mods: ["Super"], key: "V", comment: "Clipboard" },
                 { mods: ["Super"], key: "Comma", comment: "Settings" },
                 { mods: ["Super"], key: "Slash", comment: "Cheatsheet" },

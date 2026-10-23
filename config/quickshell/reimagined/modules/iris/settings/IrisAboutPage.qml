@@ -66,8 +66,9 @@ Flickable {
         InfoCard {
             rows: [
                 { label: Translation.tr("Author"), value: "Harinarayanan.B.S" },
-                { label: Translation.tr("Family"), value: Translation.tr("iRiS · Island family") },
-                { label: "iRiS", value: root.irisVersion },
+                { label: Translation.tr("Family"), value: Translation.tr("NexUI · Island family") },
+                { label: "NexUI Island", value: root.irisVersion },
+                { label: Translation.tr("Animation Renderer"), value: "NexFlow" },
                 { label: Translation.tr("Based on"), value: "iNiR (GPL-3.0)" },
                 { label: Translation.tr("Branch"), value: ShellUpdates.localCommit.length > 0 ? ShellUpdates.currentBranch : "", highlight: ShellUpdates.isNonMainBranch },
                 { label: Translation.tr("Commit"), value: ShellUpdates.localCommit },

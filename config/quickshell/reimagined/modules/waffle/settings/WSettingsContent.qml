@@ -100,7 +100,7 @@ Item {
         { pageIndex: 1, pageName: "General", section: "Keyboard indicators", label: "Num Lock indicator", targetLabel: "Num Lock indicator", keywords: ["keyboard", "num", "numlock", "lock", "indicator", "bar", "taskbar", "show", "hide"] },
         // Window Management
         { pageIndex: 1, pageName: "General", section: "Window Management", label: "Confirm before closing", targetLabel: "Confirm before closing", keywords: ["close", "confirm", "window", "dialog", "super+q"] },
-        { pageIndex: 1, pageName: "General", section: "Window animations", label: "Animation style", targetLabel: "Animation style", keywords: ["niri", "animations", "preset", "motion", "bounce", "bouncy", "snappy", "fast", "slow", "smooth", "material", "open", "close", "window", "effects"] },
+        { pageIndex: 1, pageName: "General", section: "NexFlow Animation Renderer", label: "NexFlow animation style", targetLabel: "NexFlow animation style", keywords: ["nexflow", "niri", "animations", "preset", "motion", "bounce", "bouncy", "snappy", "fast", "slow", "smooth", "material", "open", "close", "window", "effects"] },
         { pageIndex: 1, pageName: "General", section: "Window Management", label: "Auto-expand a single tiling window", targetLabel: "Auto-expand a single tiling window", keywords: ["niri", "window", "tiling", "maximize", "expand", "single", "column"] },
         // Sounds
         { pageIndex: 1, pageName: "General", section: "Sounds", label: "Battery sounds", targetLabel: "Battery sounds", keywords: ["sound", "audio", "battery", "beep"] },
@@ -201,7 +201,7 @@ Item {
         { pageIndex: 5, pageName: "Gowall", section: "Operation", label: "Pixelate", targetLabel: "Operation", keywords: ["gowall", "pixelate", "pixel", "8bit"] },
         { pageIndex: 5, pageName: "Gowall", section: "Operation", label: "Upscale", targetLabel: "Operation", keywords: ["gowall", "upscale", "ai", "esrgan", "quality"] },
         { pageIndex: 5, pageName: "Gowall", section: "Color Scheme Source", label: "Built-in theme", targetLabel: "Color Scheme Source", keywords: ["gowall", "builtin", "theme", "catppuccin", "nord", "gruvbox"] },
-        { pageIndex: 5, pageName: "Gowall", section: "Color Scheme Source", label: "iNiR theme", targetLabel: "Color Scheme Source", keywords: ["gowall", "inir", "palette", "material you"] },
+        { pageIndex: 5, pageName: "Gowall", section: "Color Scheme Source", label: "NexUI theme", targetLabel: "Color Scheme Source", keywords: ["gowall", "nexui", "palette", "material you"] },
         { pageIndex: 5, pageName: "Gowall", section: "Color Scheme Source", label: "Custom palette", targetLabel: "Color Scheme Source", keywords: ["gowall", "custom", "palette", "colors"] },
         { pageIndex: 5, pageName: "Gowall", section: "Output", label: "Format", targetLabel: "Format", keywords: ["gowall", "output", "format", "png", "webp", "jpg"] },
         { pageIndex: 5, pageName: "Gowall", section: "Extract Palette", label: "Extract colors", targetLabel: "Extract colors", keywords: ["gowall", "extract", "palette", "colors", "picker"] },

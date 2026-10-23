@@ -799,10 +799,10 @@ WSettingsPage {
             visible: Config.options?.appearance?.wallpaperTheming?.enableSpicetify ?? true
             label: Translation.tr("Spotify theme")
             icon: "terminal"
-            description: Translation.tr("Choose the Spicetify layout while keeping iNiR wallpaper colors")
+            description: Translation.tr("Choose the Spicetify layout while keeping NexUI wallpaper colors")
             currentValue: Config.options?.appearance?.wallpaperTheming?.spicetifyTheme ?? "Inir"
             options: [
-                { value: "Inir", displayName: "iNiR" },
+                { value: "Inir", displayName: "NexUI" },
                 { value: "InirTUI", displayName: Translation.tr("Text (TUI)") }
             ]
             onSelected: newValue => {
@@ -838,7 +838,7 @@ WSettingsPage {
         WSettingsSwitch {
             label: Translation.tr("Claude Code")
             icon: "terminal"
-            description: Translation.tr("Adds iNiR themes to Claude Code's theme list: two follow your wallpaper, two keep a fixed Monokai palette")
+            description: Translation.tr("Adds NexUI themes to Claude Code's theme list: two follow your wallpaper, two keep a fixed Monokai palette")
             checked: Config.options?.appearance?.wallpaperTheming?.enableClaudeCode ?? false
             onCheckedChanged: Config.setNestedValue("appearance.wallpaperTheming.enableClaudeCode", checked)
         }

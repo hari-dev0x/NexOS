@@ -157,7 +157,7 @@ Singleton {
             key: "autostart",
             name: Translation.tr("Autostart"),
             icon: "rocket_launch",
-            desc: Translation.tr("Apps that start with iNiR"),
+            desc: Translation.tr("Apps that start with NexUI"),
             essential: false,
             component: "modules/settings/AutostartConfig.qml"
         },
@@ -243,7 +243,7 @@ Singleton {
         },
         {
             key: "iris",
-            name: "iRiS",
+            name: "NexUI Island",
             icon: "visibility",
             desc: Translation.tr("Apple-inspired Island shell and modules"),
             essential: true,
@@ -439,7 +439,7 @@ Singleton {
             pageIndex: 0, pageName: root.pages[0].name,
             section: Translation.tr("Capture locations"),
             label: Translation.tr("Screenshots folder"),
-            description: Translation.tr("Where iNiR screenshots are saved"),
+            description: Translation.tr("Where NexUI screenshots are saved"),
             keywords: ["capture", "screenshot", "snip", "save", "path", "folder", "directory", "picture"]
         },
         {
@@ -1076,7 +1076,7 @@ Singleton {
             pageIndex: 5, pageName: root.pages[5].name,
             section: Translation.tr("Alt+Tab"),
             label: Translation.tr("Alt+Tab opens"),
-            description: Translation.tr("Niri's Recent Windows or the iNiR switcher"),
+            description: Translation.tr("Niri's Recent Windows or the NexUI switcher"),
             keywords: ["alt", "tab", "alt+tab", "switcher", "window", "windows", "recent", "niri", "inir", "switch", "cycle", "keybind", "shortcut"]
         },
         {
@@ -1423,7 +1423,7 @@ Singleton {
             pageIndex: 6, pageName: root.pages[6].name,
             section: Translation.tr("Region selector (screen snipping/Google Lens)"),
             label: Translation.tr("Screenshots folder"),
-            description: Translation.tr("Choose where iNiR screenshots are saved"),
+            description: Translation.tr("Choose where NexUI screenshots are saved"),
             keywords: ["screenshot", "snip", "capture", "save", "path", "folder", "directory", "destination"]
         },
         {
@@ -1909,7 +1909,7 @@ Singleton {
         { pageIndex: 14, pageName: root.pages[14].name, section: Translation.tr("Date badge"), label: Translation.tr("Date badge"), description: Translation.tr("Desktop date in ticket, stacked or seal styles"), keywords: ["date", "badge", "day", "month", "year", "ticket", "stacked", "seal", "desktop", "widget"] },
         { pageIndex: 14, pageName: root.pages[14].name, section: Translation.tr("Decorative shape"), label: Translation.tr("Decorative shape"), description: Translation.tr("Desktop shapes with fill, outline and rotation controls"), keywords: ["shape", "decorative", "decoration", "flower", "circle", "fill", "outline", "rotation", "desktop", "widget"] },
         { pageIndex: 14, pageName: root.pages[14].name, section: Translation.tr("Edit Mode"), label: Translation.tr("Widget edit mode"), description: Translation.tr("Grid overlay and snap-to-grid for widget placement"), keywords: ["widget", "edit", "grid", "snap", "placement", "drag"] },
-        { pageIndex: 14, pageName: root.pages[14].name, section: Translation.tr("Appearance"), label: Translation.tr("Desktop widgets"), description: Translation.tr("Current iNiR palette"), keywords: ["widget", "color", "colour", "palette", "preset", "primary", "secondary", "tertiary", "signal", "surface", "wallpaper"] },
+        { pageIndex: 14, pageName: root.pages[14].name, section: Translation.tr("Appearance"), label: Translation.tr("Desktop widgets"), description: Translation.tr("Current NexUI palette"), keywords: ["widget", "color", "colour", "palette", "preset", "primary", "secondary", "tertiary", "signal", "surface", "wallpaper"] },
         { pageIndex: 14, pageName: root.pages[14].name, section: Translation.tr("Clock"), label: Translation.tr("Desktop clock"), description: Translation.tr("Clock widget on the desktop background"), keywords: ["clock", "widget", "cookie", "digital", "background", "desktop", "wallpaper", "adaptive", "colors"] },
         { pageIndex: 14, pageName: root.pages[14].name, section: Translation.tr("Clock"), label: Translation.tr("Clock style"), description: Translation.tr("Cookie, digital or Android stacked clock"), keywords: ["clock", "style", "cookie", "digital", "android", "stacked", "analog", "hands"] },
         { pageIndex: 14, pageName: root.pages[14].name, section: Translation.tr("Japanese Typography"), label: Translation.tr("Japanese typography widget"), description: Translation.tr("Vertical editorial lettering with layout, font, palette, seal, and footer controls"), keywords: ["japanese", "typography", "vertical", "text", "kanji", "kana", "poster", "magazine", "editorial", "seal", "widget", "font", "mincho", "gothic", "color", "palette", "sumi", "outline"] },
@@ -1949,7 +1949,7 @@ Singleton {
             pageIndex: 17, pageName: root.pages[17].name,
             section: Translation.tr("How autostart works"),
             label: Translation.tr("Autostart"),
-            description: Translation.tr("Launch apps when iNiR starts"),
+            description: Translation.tr("Launch apps when NexUI starts"),
             keywords: ["autostart", "startup", "launch", "apps", "boot", "discord", "steam", "telegram"]
         },
 

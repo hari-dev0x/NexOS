@@ -53,7 +53,7 @@ PanelWindow {
         for (const spec of root.specifications)
             if (spec.target === root.target && String(spec.path).startsWith("iris.") && spec.fallback !== undefined) updates[spec.path] = spec.fallback
         Config.setNestedValues(updates)
-        IrisEditHistory.say(Translation.tr("%1 is back to how iRiS comes").arg(Translation.tr(root.areaOf(root.target).label)))
+        IrisEditHistory.say(Translation.tr("%1 is back to how NexUI comes").arg(Translation.tr(root.areaOf(root.target).label)))
     }
 
     // Search reads every area the forgiving way Spotlight does; results stay grouped under their area.
@@ -637,7 +637,7 @@ PanelWindow {
                     buttonRadius: height / 2
                     onClicked: {
                         const theme = IrisThemes.importText(String(Quickshell.clipboardText ?? ""))
-                        IrisEditHistory.say(theme ? Translation.tr("Imported “%1”").arg(theme.name) : Translation.tr("The clipboard does not hold an iRiS theme"))
+                        IrisEditHistory.say(theme ? Translation.tr("Imported “%1”").arg(theme.name) : Translation.tr("The clipboard does not hold a NexUI theme"))
                     }
                 }
                 IrisButton {

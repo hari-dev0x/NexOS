@@ -440,7 +440,7 @@ Item {
                     buttonRadius: height / 2
                     onClicked: {
                         const theme = IrisThemes.importText(String(Quickshell.clipboardText ?? ""))
-                        IrisEditHistory.say(theme ? Translation.tr("Imported “%1”").arg(theme.name) : Translation.tr("The clipboard does not hold an iRiS theme"))
+                        IrisEditHistory.say(theme ? Translation.tr("Imported “%1”").arg(theme.name) : Translation.tr("The clipboard does not hold a NexUI theme"))
                     }
                 }
                 IrisButton {

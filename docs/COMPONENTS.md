@@ -71,3 +71,13 @@ A clean, centered modal dialog providing one-click options to:
 - **Reboot:** Reboots the computer safely.
 - **Power Off:** Initiates standard ACPI shutdown.
 - **Log Out:** Exits Niri compositor session.
+
+---
+
+## 7. NexFlow Motion Architecture & Animation Engine
+
+**NexFlow** is the dedicated motion rendering engine that drives all animated interactions across NexUI components:
+
+- **Morphing Physics:** Underpins the LivingBar's adaptive transitions using real-time spring dynamics (`IrisSpring.qml`).
+- **Surface Transitions:** Powers modal overlays, drawer reveals, and dropdown expansions using calibrated cubic-bezier easing (`Appearance.qml`).
+- **Compositor Synchronization:** Connects shell interactions with Niri window animations (`60-animations.kdl`), delivering unified motion behavior across floating panels, tiled columns, and desktop surfaces.

@@ -250,7 +250,7 @@ Singleton {
             Quickshell.execDetached(["/usr/bin/notify-send",
                 Translation.tr("Software"),
                 Translation.tr("No package available for your system"),
-                "-a", "iNiR"])
+                "-a", "NexUI"])
             return false
         }
 
@@ -281,7 +281,7 @@ Singleton {
                 Quickshell.execDetached(["/usr/bin/notify-send",
                     Translation.tr("Software"),
                     Translation.tr("This package requires an AUR helper (yay or paru)"),
-                    "-a", "iNiR"])
+                    "-a", "NexUI"])
                 return false
             default:
                 return false

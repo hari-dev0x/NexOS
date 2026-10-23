@@ -72,7 +72,7 @@ NexUI listens on a local Unix domain socket for real-time IPC messages from keyb
 ```bash
 # Toggle UI components
 nexui overview toggle         # Application launcher & search
-nexui iris controlCenter toggle # Iris Control Center
+nexui iris controlCenter toggle # NexUI Control Center
 nexui clipboard toggle        # Clipboard history picker
 nexui session toggle          # Power / lock / logout matrix
 nexui settings                # Shell configuration GUI

@@ -361,8 +361,8 @@ Singleton {
         },
         {
             id: "style-inir",
-            name: Translation.tr("Style: iNiR"),
-            description: Translation.tr("Switch to iNiR style"),
+            name: Translation.tr("Style: NexUI"),
+            description: Translation.tr("Switch to NexUI style"),
             icon: "terminal",
             category: "appearance",
             keywords: ["style", "inir", "theme"],
@@ -419,7 +419,7 @@ Singleton {
         {
             id: "frame-music",
             name: Translation.tr("Frame Music"),
-            description: Translation.tr("Toggle music on the iRiS frame"),
+            description: Translation.tr("Toggle music on the NexUI frame"),
             icon: "graphic_eq",
             category: "appearance",
             keywords: ["iris", "frame", "chassis", "music", "visualizer"],
@@ -830,8 +830,8 @@ Singleton {
         },
         {
             id: "switch-family-iris",
-            name: Translation.tr("Switch to iRiS Panel Family"),
-            description: Translation.tr("Use the minimal iRiS shell layout"),
+            name: Translation.tr("Switch to NexUI Island Panel Family"),
+            description: Translation.tr("Use the minimal NexUI Island shell layout"),
             icon: "visibility",
             category: "settings",
             keywords: ["family", "panel", "iris", "minimal", "lightweight", "layout"],

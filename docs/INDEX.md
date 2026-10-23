@@ -39,7 +39,7 @@ NexUI is a modern, high-performance desktop shell environment engineered for **C
 ```text
 ┌────────────────────────────────────────────────────────┐
 │               NexUI Precision Shell Surface            │
-│       Quickshell (Qt 6 / QML) · LivingBar · IrisStyle  │
+│       Quickshell (Qt 6 / QML) · LivingBar · NexFlow    │
 ├────────────────────────────────────────────────────────┤
 │             Niri Wayland Compositor (KDL Config)       │
 │       Scrollable Tiling · Layer-Shell · Direct Scanout │

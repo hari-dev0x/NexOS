@@ -51,7 +51,7 @@ ColumnLayout {
             { key: "width", label: "Width", current: nearest,
                 options: [{ value: 340, label: "Slim" }, { value: 360, label: "Regular" }, { value: 400, label: "Roomy" }, { value: 440, label: "Broad" }] },
             { key: "accent", label: "Accent", current: IrisControlOptions.accentMode,
-                options: [{ value: "system", label: "iRiS" }, { value: "accent", label: "Accent" }, { value: "colourful", label: "Colourful" }, { value: "mono", label: "Mono" }] },
+                options: [{ value: "system", label: "NexUI" }, { value: "accent", label: "Accent" }, { value: "colourful", label: "Colourful" }, { value: "mono", label: "Mono" }] },
             { key: "sliders", label: "Slider fill", current: IrisControlOptions.accentSliders ? "accent" : "neutral",
                 options: [{ value: "neutral", label: "Neutral" }, { value: "accent", label: "Accent" }] },
             { key: "opens", label: "Opens as", current: String(IrisControlOptions.options?.opens ?? "island"),

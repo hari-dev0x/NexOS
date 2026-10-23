@@ -125,7 +125,7 @@ Singleton {
         },
         {
             id: "iris-ink",
-            name: "iRiS Ink",
+            name: "NexUI Ink",
             description: "Washi and sumi, softer than white",
             icon: "ink_pen",
             colors: irisInkColors,

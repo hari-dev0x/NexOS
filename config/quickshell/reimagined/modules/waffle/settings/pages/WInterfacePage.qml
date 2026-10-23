@@ -810,12 +810,12 @@ WSettingsPage {
             visible: MaterialThemeLoader.loginScreenInstalled
             label: Translation.tr("Login screen")
             icon: "key"
-            description: Translation.tr("Where you sign in after starting the computer. Automatic shows iRiS while you use iRiS.")
+            description: Translation.tr("Where you sign in after starting the computer. Automatic shows NexUI while you use NexUI.")
             currentValue: Config.options?.lock?.loginScreen ?? "auto"
             options: [
                 { value: "auto", displayName: Translation.tr("Automatic") },
                 { value: "classic", displayName: Translation.tr("Classic") },
-                { value: "iris", displayName: Translation.tr("iRiS") }
+                { value: "iris", displayName: Translation.tr("NexUI") }
             ]
             onSelected: newValue => Config.setNestedValue("lock.loginScreen", newValue)
         }
@@ -905,7 +905,7 @@ WSettingsPage {
             label: Translation.tr("System + microphone")
             icon: root.audioMixAvailable ? "speaker-settings" : "info"
             description: root.audioMixAvailable
-                ? Translation.tr("iNiR combines system audio and microphone automatically. The temporary audio route is removed when recording ends")
+                ? Translation.tr("NexUI combines system audio and microphone automatically. The temporary audio route is removed when recording ends")
                 : Translation.tr("System and microphone audio cannot be combined on this setup. Recording will continue with whichever source is available")
         }
 

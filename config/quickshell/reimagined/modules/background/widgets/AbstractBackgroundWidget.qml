@@ -2217,7 +2217,7 @@ AbstractWidget {
         const list = []
         const family = Config.options?.panelFamily ?? "ii"
         if (family !== "iris" && family !== "ii") return list
-        if (family === "iris" && root.irisFace !== null) list.push({ value: "iris", icon: "auto_awesome", label: Translation.tr("iRiS") })
+        if (family === "iris" && root.irisFace !== null) list.push({ value: "iris", icon: "auto_awesome", label: Translation.tr("NexUI") })
         if (family === "ii" || !root.irisOnly) list.push({ value: "material", icon: "widgets", label: Translation.tr("Material") })
         if (DesktopWidgetDesign.supports(root.configEntryName)) {
             list.push({ value: "instrument", icon: "avg_pace", label: Translation.tr("iNstrument") })

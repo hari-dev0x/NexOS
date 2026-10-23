@@ -51,7 +51,7 @@ QtObject {
         { id: "shellUpdate", label: "New NexUI", description: "Shows up on its own when there is a new NexUI update, and goes away once you update. Its card says what changed and updates from there.", card: true },
         { id: "anime", label: "Airing", description: "The anime episode airing next, as its cover art and the time left. Its card lists what is coming and follows the shows you tap.", card: true,
             keywords: ["anime", "weeb", "otaku", "airing", "japanese", "japones", "tracker", "following", "siguiendo", "episodes", "episodios", "episodio", "schedule", "calendario", "ver", "ani-cli", "ani cli"] },
-        { id: "watching", label: "Continue", description: "Watch anime without a terminal: search, pick an episode and pick up where you stopped. ani-cli finds it; iRiS plays it.", card: true,
+        { id: "watching", label: "Continue", description: "Watch anime without a terminal: search, pick an episode and pick up where you stopped. ani-cli finds it; NexUI plays it.", card: true,
             keywords: ["anime", "weeb", "otaku", "continue", "continuar", "resume", "reanudar", "watching", "viendo", "seguir viendo", "history", "historial", "episode", "episodio", "ani-cli", "ani cli", "jerry", "curd", "last watched", "ver", "watch anime", "mirar anime", "ver anime", "search", "buscar", "player", "reproductor", "mpv", "dub", "subtitles"] }
     ]
     readonly property var slotIds: root.slots.map(piece => piece.id)

@@ -1962,7 +1962,7 @@ ContentPage {
             NoticeBox {
                 Layout.fillWidth: true
                 materialIcon: "folder"
-                text: Translation.tr("Recordings and iNiR screenshots can use different folders. These paths are also available in Tools for detailed capture settings.")
+                text: Translation.tr("Recordings and NexUI screenshots can use different folders. These paths are also available in Tools for detailed capture settings.")
             }
 
             ContentSubsection {
@@ -2067,7 +2067,7 @@ ContentPage {
                         }
                         StyledText {
                             Layout.fillWidth: true
-                            text: Translation.tr("iNiR learns senders from notification history. Block an app here and it is rejected before history, sound, counters and popups.")
+                            text: Translation.tr("NexUI learns senders from notification history. Block an app here and it is rejected before history, sound, counters and popups.")
                             color: M3Palette.surfaceVariantForeground
                             font.pixelSize: Appearance.font.pixelSize.smaller
                             wrapMode: Text.WordWrap
@@ -2283,7 +2283,7 @@ ContentPage {
                         }
                         StyledText {
                             Layout.fillWidth: true
-                            text: Translation.tr("Audio apps are detected live from PipeWire. Enable a filter to exclude that app from visualizers; with no filters enabled, iNiR follows the active player automatically.")
+                            text: Translation.tr("Audio apps are detected live from PipeWire. Enable a filter to exclude that app from visualizers; with no filters enabled, NexUI follows the active player automatically.")
                             color: M3Palette.surfaceVariantForeground
                             font.pixelSize: Appearance.font.pixelSize.smaller
                             wrapMode: Text.WordWrap

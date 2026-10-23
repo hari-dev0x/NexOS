@@ -9,7 +9,7 @@ import qs.modules.iris.field as Field
 
 FloatingWindow {
     id: root
-    title: Translation.tr("iNiR Settings")
+    title: Translation.tr("NexUI Settings")
     visible: GlobalStates.settingsOverlayOpen
     color: body.frame.material === "compositor" ? "transparent" : IrisStyle.surface
     implicitWidth: Math.round(1180 * IrisStyle.density)

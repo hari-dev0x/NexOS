@@ -3006,7 +3006,7 @@ Singleton {
             }
 
             property JsonObject hotspot: JsonObject {
-                property string ssid: "iNiR Hotspot"
+                property string ssid: "NexUI Hotspot"
                 property string password: ""
                 property string band: "bg" // "bg" = 2.4GHz, "a" = 5GHz
             }

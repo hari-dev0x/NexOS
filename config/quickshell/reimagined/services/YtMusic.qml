@@ -1783,7 +1783,7 @@ print("")
         stdout: SplitParser {
             onRead: line => {
                 if (line.trim()) {
-                    root.googleError = Translation.tr("YT Music runtime unavailable. Run inir doctor.")
+                    root.googleError = Translation.tr("YT Music runtime unavailable. Run nexui doctor.")
                     root._log("[YtMusic] Missing dependencies:" + line.trim())
                 }
             }
@@ -1798,7 +1798,7 @@ print("")
                     Qt.callLater(() => root._playInternal(pendingItem))
                 } else {
                     root.loading = false
-                    root.error = Translation.tr("YT Music runtime unavailable. Run inir doctor.")
+                    root.error = Translation.tr("YT Music runtime unavailable. Run nexui doctor.")
                 }
             }
         }

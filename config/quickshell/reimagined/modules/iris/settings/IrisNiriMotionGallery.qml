@@ -155,8 +155,8 @@ ColumnLayout {
         color: NiriAnimationPresets.error.length > 0 ? IrisStyle.danger : IrisStyle.muted
         font.pixelSize: IrisStyle.typeMeta
         text: NiriAnimationPresets.error.length > 0 ? Translation.tr("Niri turned that preset down and kept your animations.")
-            : !NiriAnimationPresets.loaded ? Translation.tr("Reading Niri's animations…")
+            : !NiriAnimationPresets.loaded ? Translation.tr("Reading NexFlow animations…")
             : root.activeId.length === 0 ? Translation.tr("Your own timing. Pick one to replace it.")
-            : Translation.tr("Hover a preset to watch it. The figure is how long a window takes to open.")
+            : Translation.tr("NexFlow Animation Renderer · Hover a preset to preview window motion. The figure is how long a window takes to open.")
     }
 }

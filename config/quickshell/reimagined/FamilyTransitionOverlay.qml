@@ -401,7 +401,7 @@ Scope {
                 IrisText {
                     anchors.horizontalCenter: parent.horizontalCenter
                     role: IrisText.Display
-                    text: "iRiS"
+                    text: "NexUI"
                     color: IrisStyle.onMedia
                 }
             }

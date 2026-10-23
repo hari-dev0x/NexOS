@@ -239,7 +239,7 @@ ColumnLayout {
             onSelected: newValue => { root.convertSource = newValue }
             options: [
                 { displayName: Translation.tr("Built-in theme"), icon: "style", value: "builtin" },
-                { displayName: Translation.tr("Current iNiR theme"), icon: "palette", value: "inir" },
+                { displayName: Translation.tr("Current NexUI theme"), icon: "palette", value: "inir" },
                 { displayName: Translation.tr("Custom palette"), icon: "edit", value: "custom" }
             ]
         }

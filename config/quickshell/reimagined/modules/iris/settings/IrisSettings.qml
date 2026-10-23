@@ -624,7 +624,7 @@ Item {
                                         IrisMark { implicitSize: Math.round(13 * root.d); anchors.verticalCenter: parent.verticalCenter }
                                         IrisText {
                                             anchors.verticalCenter: parent.verticalCenter
-                                            text: Translation.tr("iRiS · Island family")
+                                            text: Translation.tr("NexUI · Island family")
                                             color: IrisStyle.muted
                                             font.pixelSize: IrisStyle.typeMeta
                                         }
@@ -987,7 +987,7 @@ Item {
                                 visible: root.section === "general" && root.browsing
                                 tinted: true
                                 links: [
-                                    { key: "about", label: Translation.tr("About iNiR"), icon: "info", tint: IrisStyle.identity.lavender },
+                                    { key: "about", label: Translation.tr("About NexUI"), icon: "info", tint: IrisStyle.identity.lavender },
                                     { key: "shortcuts", label: Translation.tr("Keyboard shortcuts"), icon: "keyboard", tint: IrisStyle.identity.indigo }
                                 ].filter(link => root.pages.some(page => page.key === link.key)).map(link => ({
                                     label: link.label, icon: link.icon, tint: link.tint,

@@ -9,7 +9,7 @@ import qs.modules.common.widgets
 ContentPage {
     id: root
     settingsPageIndex: 28
-    settingsPageName: "iRiS"
+    settingsPageName: "NexUI Island"
     property string activeSection: "design"
     readonly property bool familyActive: (Config.options?.panelFamily ?? "ii") === "iris"
     // User modules live on the Island's Desktop page. They are stored in the
@@ -88,7 +88,7 @@ ContentPage {
                 settingsTaskSection: "design"
                 expanded: true
                 icon: "visibility"
-                title: Translation.tr("iRiS family")
+                title: Translation.tr("NexUI Island family")
                 SettingsGroup {
                     RowLayout {
                         Layout.fillWidth: true
@@ -102,7 +102,7 @@ ContentPage {
                             Layout.fillWidth: true
                             spacing: 2
                             StyledText {
-                                text: root.familyActive ? Translation.tr("iRiS is active") : Translation.tr("iRiS is ready")
+                                text: root.familyActive ? Translation.tr("NexUI Island is active") : Translation.tr("NexUI Island is ready")
                                 font.weight: Font.DemiBold
                             }
                             StyledText {
@@ -242,7 +242,7 @@ ContentPage {
                 SettingsGroup {
                     StyledText {
                         Layout.fillWidth: true
-                        text: Translation.tr("Custom widgets can expose a compact iRiS component; enabled ones appear on the Island's Desktop page, in this order.")
+                        text: Translation.tr("Custom widgets can expose a compact NexUI Island component; enabled ones appear on the Island's Desktop page, in this order.")
                         color: Appearance.colors.colSubtext
                         font.pixelSize: Appearance.font.pixelSize.smaller
                         wrapMode: Text.WordWrap
@@ -306,7 +306,7 @@ ContentPage {
                         Layout.fillWidth: true
                         visible: CustomWidgets.ready
                             && CustomWidgets.widgets.filter(widget => String(widget.irisQmlPath ?? "").length > 0).length === 0
-                        text: Translation.tr("No custom iRiS modules installed. `inir customWidgets create my-widget` now scaffolds one.")
+                        text: Translation.tr("No custom NexUI Island modules installed. `nexui customWidgets create my-widget` now scaffolds one.")
                         color: Appearance.colors.colSubtext
                         font.pixelSize: Appearance.font.pixelSize.smaller
                         wrapMode: Text.WordWrap

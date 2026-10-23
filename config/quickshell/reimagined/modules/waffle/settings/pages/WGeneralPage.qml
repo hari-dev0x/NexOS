@@ -231,13 +231,13 @@ WSettingsPage {
     
     WSettingsCard {
         visible: CompositorService.isNiri
-        title: Translation.tr("Window animations")
+        title: Translation.tr("NexFlow Animation Renderer")
         icon: "wand"
 
         WSettingsRow {
             icon: "play"
-            label: Translation.tr("Animation style")
-            description: Translation.tr("How windows open, close and slide between columns")
+            label: Translation.tr("NexFlow animation style")
+            description: Translation.tr("NexFlow motion engine — how windows open, close and slide between columns")
         }
 
         WNiriAnimationPresets {}

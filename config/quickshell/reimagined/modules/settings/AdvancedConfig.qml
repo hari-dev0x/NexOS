@@ -137,7 +137,7 @@ ContentPage {
             ContentSubsection {
                 visible: Config.options?.appearance?.wallpaperTheming?.enableSpicetify ?? true
                 title: Translation.tr("Spotify theme")
-                tooltip: Translation.tr("Choose the Spicetify layout while keeping iNiR wallpaper colors")
+                tooltip: Translation.tr("Choose the Spicetify layout while keeping NexUI wallpaper colors")
 
                 ConfigSelectionArray {
                     currentValue: Config.options?.appearance?.wallpaperTheming?.spicetifyTheme ?? "Inir"
@@ -146,7 +146,7 @@ ContentPage {
                         colorRegenTimer.restart()
                     }
                     options: [
-                        { displayName: "iNiR", value: "Inir" },
+                        { displayName: "NexUI", value: "Inir" },
                         { displayName: Translation.tr("Text (TUI)"), value: "InirTUI" }
                     ]
                 }
@@ -196,7 +196,7 @@ ContentPage {
                     colorRegenTimer.restart();
                 }
                 StyledToolTip {
-                    text: Translation.tr("Adds iNiR themes to Claude Code's theme list: two follow your wallpaper, two keep a fixed Monokai palette")
+                    text: Translation.tr("Adds NexUI themes to Claude Code's theme list: two follow your wallpaper, two keep a fixed Monokai palette")
                 }
             }
             SettingsSwitch {
@@ -279,7 +279,7 @@ ContentPage {
                 onCheckedChanged: root.setCavaValue(
                     "appearance.wallpaperTheming.enableCava", checked, true)
                 StyledToolTip {
-                    text: Translation.tr("Manage the external ~/.config/cava/config block. Internal iNiR visualizers use the options below whether this switch is on or off.")
+                    text: Translation.tr("Manage the external ~/.config/cava/config block. Internal NexUI visualizers use the options below whether this switch is on or off.")
                 }
             }
 

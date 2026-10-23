@@ -94,7 +94,7 @@ WSettingsPage {
             options: [
                 { value: "ii", displayName: Translation.tr("Material (ii)") },
                 { value: "waffle", displayName: Translation.tr("Windows 11 (Waffle)") },
-                { value: "iris", displayName: "iRiS" }
+                { value: "iris", displayName: Translation.tr("NexUI Island") }
             ]
             onSelected: newValue => {
                 if (newValue !== Config.options?.panelFamily) {
@@ -107,7 +107,7 @@ WSettingsPage {
             model: [
                 { value: "ii", label: Translation.tr("Material in the switch shortcut") },
                 { value: "waffle", label: Translation.tr("Windows 11 in the switch shortcut") },
-                { value: "iris", label: Translation.tr("iRiS in the switch shortcut") }
+                { value: "iris", label: Translation.tr("NexUI Island in the switch shortcut") }
             ]
             WSettingsSwitch {
                 required property var modelData

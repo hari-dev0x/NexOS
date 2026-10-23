@@ -109,8 +109,8 @@ WSettingsPage {
     }
 
     function displayCategoryName(name: string): string {
-        if (name === "ii Shell")
-            return Translation.tr("iNiR Shell")
+        if (name === "ii Shell" || name === "iNiR Shell")
+            return Translation.tr("NexUI Shell")
         return name
     }
     
@@ -118,6 +118,8 @@ WSettingsPage {
         const icons = {
             "System": "power",
             "ii Shell": "wand",
+            "iNiR Shell": "wand",
+            "NexUI Shell": "wand",
             "Window Switcher": "arrow-sync",
             "Screenshots": "screenshot",
             "Applications": "apps",

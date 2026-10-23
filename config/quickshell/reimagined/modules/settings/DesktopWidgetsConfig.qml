@@ -1674,7 +1674,7 @@ ContentPage {
             StyledText {
                 visible: root.irisActive
                 Layout.fillWidth: true
-                text: Translation.tr("iRiS sets the design, material and colours of every widget in its own Settings. The options on each widget below apply while it wears the Material, iNstrument or Readout design.")
+                text: Translation.tr("NexUI sets the design, material and colours of every widget in its own Settings. The options on each widget below apply while it wears the Material, iNstrument or Readout design.")
                 color: Appearance.colors.colSubtext
                 font.pixelSize: Appearance.font.pixelSize.smaller
                 wrapMode: Text.WordWrap
@@ -1684,7 +1684,7 @@ ContentPage {
                 Layout.fillWidth: false
                 leftmost: true; rightmost: true
                 buttonIcon: "widgets"
-                buttonText: Translation.tr("Open iRiS widget settings")
+                buttonText: Translation.tr("Open NexUI widget settings")
                 onClicked: root.openIrisWidgets()
             }
             WidgetSettingRow {

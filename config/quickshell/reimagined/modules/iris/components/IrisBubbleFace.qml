@@ -937,7 +937,7 @@ Item {
         : root.kind === "updates" ? Translation.tr("Updates")
         : root.kind === "anime" ? Translation.tr("Airing")
         : root.kind === "watching" ? Translation.tr("Continue")
-        : root.kind === "shellUpdate" ? Translation.tr("New iNiR")
+        : root.kind === "shellUpdate" ? Translation.tr("New NexUI")
         : root.kind === "vpn" ? Translation.tr("VPN")
         : root.kind === "record" ? Translation.tr("Screen recording") : Translation.tr("Timer")
 }

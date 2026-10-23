@@ -125,7 +125,37 @@ Geometry:
 
 ---
 
-## 6. Attributions & Licensing
+## 6. NexFlow Animation Renderer
+
+**NexFlow** is the dedicated motion and animation rendering engine powering NexUI. It synchronizes visual transitions between QML shell surfaces and Niri compositor window operations.
+
+### Motion Principles & Architecture
+1. **Physical Spring Dynamics (`IrisSpring.qml`):**
+   - Implements second-order damped harmonic oscillator physics:
+     $$m \ddot{x} + c \dot{x} + k x = 0$$
+   - Configurable damping ratio ($\zeta$) and stiffness ($k$) for natural, responsive settling without artificial stiffness.
+   - Used for interactive drags, living capsule expansions, and slider tracking.
+2. **Cubic-Bezier Easing Curves (`Appearance.qml`):**
+   - Expressive transition profiles:
+     - `decelerate`: `(0.05, 0.7, 0.1, 1.0)` — Rapid entry, gentle settling.
+     - `accelerate`: `(0.3, 0.0, 0.8, 0.15)` — Decisive surface exits.
+     - `standard`: `(0.2, 0.0, 0.0, 1.0)` — Fluid spatial translations.
+     - `overshoot`: `(0.34, 1.56, 0.64, 1.0)` — Playful micro-interactions.
+3. **Spatial Capsule Morphing (`IrisMorphSurface.qml`):**
+   - Continuously computes coordinate transformations, border radii, and opacity cross-fades during geometry shifts.
+   - Powers the LivingBar center island transitions across music playback, volume changes, and notification bursts.
+4. **Niri Window Motion Synchronization (`NiriAnimationPresets.qml` & `60-animations.kdl`):**
+   - Synchronizes shell animations with compositor window movements across six curated presets:
+     - **Snappy**: Low-latency, fast damping for maximum productivity.
+     - **Niri**: Balanced compositor spring-damped curves with natural inertia.
+     - **Material**: Smooth decelerated curves matching Material Design 3 guidelines.
+     - **Bouncy**: Playful, energetic overshoots for expressive setups.
+     - **Gentle**: Soft, cinematic transitions with higher damping.
+     - **Instant**: Zero-duration transitions for performance-constrained hardware.
+
+---
+
+## 7. Attributions & Licensing
 
 - **Product:** NexUI by Harinarayanan B. S.
 - **License:** GNU General Public License v3.0 (GPL-3.0)

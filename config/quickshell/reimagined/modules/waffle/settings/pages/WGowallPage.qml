@@ -339,7 +339,7 @@ WSettingsPage {
                 Repeater {
                     model: [
                         { label: Translation.tr("Built-in"), value: "builtin" },
-                        { label: Translation.tr("iNiR theme"), value: "inir" },
+                        { label: Translation.tr("NexUI theme"), value: "inir" },
                         { label: Translation.tr("Custom"), value: "custom" }
                     ]
 
@@ -528,10 +528,10 @@ WSettingsPage {
         }
     }
 
-    // ── iNiR palette preview ──
+    // ── NexUI palette preview ──
     WSettingsCard {
         visible: GowallService.available && root.operationMode === "convert" && root.convertSource === "inir"
-        title: Translation.tr("Current iNiR Palette")
+        title: Translation.tr("Current NexUI Palette")
         icon: "eyedropper"
 
         WText {
@@ -539,7 +539,7 @@ WSettingsPage {
             Layout.fillWidth: true
             Layout.leftMargin: 0
             Layout.rightMargin: 0
-            text: Translation.tr("The current iNiR Material You palette is not available yet. Regenerate your wallpaper colors and try again.")
+            text: Translation.tr("The current NexUI Material You palette is not available yet. Regenerate your wallpaper colors and try again.")
             font.pixelSize: Looks.font.pixelSize.small
             color: Looks.colors.subfg
             wrapMode: Text.WordWrap

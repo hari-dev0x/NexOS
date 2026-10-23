@@ -2967,8 +2967,8 @@ ContentPage {
             }
 
             ContentSubsection {
-                title: Translation.tr("Style")
-                tooltip: Translation.tr("How windows open, close and slide between columns.")
+                title: Translation.tr("NexFlow Animation Style")
+                tooltip: Translation.tr("NexFlow Animation Renderer — How windows open, close and slide between columns.")
                 visible: root.animationsData?.enabled ?? true
 
                 NiriAnimationPresetGrid {
@@ -3253,8 +3253,8 @@ ContentPage {
                     StyledText {
                         Layout.fillWidth: true
                         text: root.hasCustomConfigDiffs
-                            ? Translation.tr("%1 config files differ from iNiR defaults").arg(root.customConfigActionableCount)
-                            : Translation.tr("iNiR-managed files are unmodified")
+                            ? Translation.tr("%1 config files differ from NexUI defaults").arg(root.customConfigActionableCount)
+                            : Translation.tr("NexUI-managed files are unmodified")
                         font.pixelSize: Appearance.font.pixelSize.small
                         color: Appearance.colors.colOnLayer1
                         wrapMode: Text.WordWrap
@@ -3265,7 +3265,7 @@ ContentPage {
             StyledText {
                 Layout.fillWidth: true
                 text: root.hasCustomConfigDiffs
-                    ? Translation.tr("These files were changed after installation. iNiR may overwrite them on update — review them to keep your modifications.")
+                    ? Translation.tr("These files were changed after installation. NexUI may overwrite them on update — review them to keep your modifications.")
                     : Translation.tr("Only generated and user-owned files differ from the managed defaults. Nothing needs attention.")
                 font.pixelSize: Appearance.font.pixelSize.small
                 color: Appearance.colors.colSubtext

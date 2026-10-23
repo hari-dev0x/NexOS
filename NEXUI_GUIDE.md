@@ -71,7 +71,7 @@ The supervisor (`config/quickshell/reimagined/run-reimagined.sh`) provides:
   ```bash
   ./inir settings
   ```
-  Opens or closes the central iNiR settings hub.
+  Opens or closes the central NexUI settings hub.
 - **First-Run Welcome Tour:**
   ```bash
   ./inir welcome
@@ -95,7 +95,7 @@ The following keybindings are registered directly in `~/.config/hypr/hyprland/ke
 | Keybinding | Action / Command | Description |
 |---|---|---|
 | `SUPER + Space` | `./inir overview toggle` | Spotlight / App search launcher |
-| `SUPER + S` | `./inir settings` | Central NexUI / iNiR settings |
+| `SUPER + S` | `./inir settings` | Central NexUI settings |
 | `SUPER + D` | `./inir iris controlCenter toggle` | Quick control center & sliders |
 | `SUPER + Escape` | `./inir session toggle` | Power & session menu (Logout/Reboot/Shutdown) |
 | `SUPER + V` | `./inir clipboard toggle` | Clipboard history search |
@@ -108,9 +108,9 @@ The following keybindings are registered directly in `~/.config/hypr/hyprland/ke
 
 ---
 
-## 4. iRiS Island & IPC Interface Reference
+## 4. NexUI Island & IPC Interface Reference
 
-The iRiS Island is controlled dynamically in real time via `./inir iris <function> [args]`.
+The NexUI Island is controlled dynamically in real time via `./inir iris <function> [args]`.
 
 ### Island State Inspection
 ```bash
@@ -267,7 +267,7 @@ Upstream iNiR was developed with first-class support for Niri and includes dedic
 | **Sound & Mic OSD** | Fully Functional | PipeWire volume overlays render on change |
 | `inir bind` | **Niri Only** | Modifies Niri KDL files (`90-user-extra.kdl`). On Niri, configure bindings in `hyprland.conf`. |
 | `inir orbit` | **Niri Only** | Requires Niri window carousel navigation IPC |
-| `inir niriAnimations` | **Niri Only** | Customises Niri compositor window transition curves |
+| `inir niriAnimations` | **Niri Only** | Customises NexFlow Niri compositor window transition curves |
 | `inir keyboard` | **Niri Only** | Switches layouts via `niri msg switch-layout` |
 | `inir minimize` | **Niri Only** | Niri workspace-hiding workaround |
 
