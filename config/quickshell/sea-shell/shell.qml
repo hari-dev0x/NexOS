@@ -3745,7 +3745,7 @@ ShellRoot {
                 // (at 0% the fill and outline both vanish and only the chips remain), so it is
                 // left alone. The rim is the part that changes: a hairline rule rather than an
                 // accent tint, so the accent goes back to marking active state only.
-                // NexOS Impasto-Inspired Bar:
+                // NexUI Impasto-Inspired Bar:
                 // When horizontal (top bar), the bounding strip is completely transparent with no outline,
                 // allowing Hyprland's layer blur (ignore_alpha = 0.25) to blur ONLY the individual floating glass islands.
                 color: root.barVertical ? theme.a(root.barFillColor, Math.max(0.65, root.cfgOpacity)) : "transparent"

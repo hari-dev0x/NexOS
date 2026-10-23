@@ -1,4 +1,4 @@
-// NexOS official mark, drawn natively from the authoritative geometric N
+// NexUI official mark, drawn natively from the authoritative geometric N
 // Four primary monolithic components: Left Vertical Stem, Upper Diagonal Blade,
 // Lower Diagonal Blade, and Right Vertical Stem.
 import QtQuick

@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=NexUI Settings
+Comment=Open NexUI settings
+Exec=nexui settings
+Icon=nexui
+Terminal=false
+Categories=Settings;

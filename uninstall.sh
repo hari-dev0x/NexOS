@@ -1,12 +1,13 @@
 #!/usr/bin/env bash
 # ==============================================================================
-# NexOS Safe Uninstaller & Rollback Assistant
-# Removes NexOS-managed configurations and offers backup restoration.
+# NexUI Safe Uninstaller & Rollback Assistant
+# Removes NexUI-managed configurations and offers backup restoration.
 # ==============================================================================
 set -uo pipefail
 
 CFG="${XDG_CONFIG_HOME:-$HOME/.config}"
-BACKUP_BASE="${CFG}/nexos-backups"
+BACKUP_BASE="${CFG}/nexui-backups"
+[[ -d "$BACKUP_BASE" ]] || BACKUP_BASE="${CFG}/nexos-backups"
 
 # Formatting
 c() { printf '\033[%sm' "$1"; }
@@ -22,10 +23,10 @@ for arg in "$@"; do
     esac
 done
 
-title "NexOS Desktop Uninstaller"
+title "NexUI Desktop Uninstaller"
 
 cat << SUMMARY
-The uninstaller will safely remove NexOS-managed desktop configurations:
+The uninstaller will safely remove NexUI-managed desktop configurations:
   • ${CFG}/quickshell/sea-shell
   • ${CFG}/sea-shell
   • ${CFG}/hypr/sea-shell
@@ -34,7 +35,7 @@ Unrelated files, personal home directories, and user documents will NOT be touch
 SUMMARY
 
 if [ "$NON_INTERACTIVE" -eq 0 ]; then
-    printf '\nProceed with removing NexOS configurations? [y/N]: '
+    printf '\nProceed with removing NexUI configurations? [y/N]: '
     read -r response
     case "$response" in
         [yY][eE][sS]|[yY]) ;;
@@ -42,7 +43,7 @@ if [ "$NON_INTERACTIVE" -eq 0 ]; then
     esac
 fi
 
-# 1. Remove NexOS shell and hypr configs
+# 1. Remove NexUI shell and hypr configs
 if [ -d "${CFG}/quickshell/sea-shell" ]; then
     rm -rf "${CFG}/quickshell/sea-shell"
     ok "Removed ${CFG}/quickshell/sea-shell"
@@ -83,4 +84,4 @@ if [ -d "${BACKUP_BASE}" ]; then
     fi
 fi
 
-ok "NexOS uninstallation complete."
+ok "NexUI uninstallation complete."

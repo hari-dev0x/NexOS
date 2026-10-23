@@ -1,28 +1,45 @@
 # Rollback & Recovery Guide
 
-NexOS is engineered to be 100% reversible. Before making any modifications, the installer creates a timestamped snapshot of existing configurations.
+**NexUI** is engineered to be 100% reversible. Before making any modifications, the installer creates a timestamped snapshot of existing configurations.
 
-## Automated Uninstallation & Rollback
-Run the uninstaller script:
+---
+
+## 1. Automated Uninstallation & Rollback
+
+Run the unified uninstaller script:
+
 ```bash
 ./uninstall.sh
 ```
+
 The uninstaller will:
-1. Delete NexOS-managed directories:
-   - `~/.config/quickshell/sea-shell`
-   - `~/.config/sea-shell`
-   - `~/.config/hypr/sea-shell`
-2. Automatically locate the most recent backup snapshot in `~/.config/nexos-backups/checkpoint-*`.
-3. Offer to restore your original configurations.
+1. Stop the user service: `systemctl --user stop nexui.service`
+2. Remove NexUI deployment directories and symlinks:
+   - `~/.config/quickshell/reimagined`
+   - `~/.config/systemd/user/nexui.service`
+   - `~/.local/bin/nexui`
+3. Automatically locate the most recent backup snapshot in `~/.config/nexui-backups/` or `~/.config/nexos-backups/`.
+4. Offer to restore your original desktop configuration.
 
-## Manual Restoration
-If you wish to manually restore a specific checkpoint:
+---
+
+## 2. Manual Restoration from Checkpoint
+
+If you prefer to manually inspect and restore a specific backup snapshot:
+
 ```bash
-CHECKPOINT=$(ls -d ~/.config/nexos-backups/checkpoint-* | tail -n 1)
+# Locate available snapshots
+ls -la ~/.config/nexui-backups/
 
-# Restore Hyprland:
-cp -a "$CHECKPOINT/hypr/"* ~/.config/hypr/
+# Select the desired checkpoint
+CHECKPOINT=$(ls -d ~/.config/nexui-backups/checkpoint-* 2>/dev/null | tail -n 1)
 
-# Restore Quickshell:
-cp -a "$CHECKPOINT/quickshell/"* ~/.config/quickshell/
+# Restore Niri configurations:
+[ -d "$CHECKPOINT/niri" ] && cp -a "$CHECKPOINT/niri/"* ~/.config/niri/
+
+# Restore Quickshell configurations:
+[ -d "$CHECKPOINT/quickshell" ] && cp -a "$CHECKPOINT/quickshell/"* ~/.config/quickshell/
+
+# Reload compositor
+niri msg action reload-config
 ```

@@ -1,7 +1,7 @@
 [SddmGreeterTheme]
-Name=NexOS
-Description=NexOS Official Hardware Login Greeter
-Author=NexOS
+Name=NexUI
+Description=NexUI Official Hardware Login Greeter
+Author=Harinarayanan.B.S
 Type=sddm-theme
 Version=1.0
 MainScript=Main.qml

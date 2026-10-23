@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512">
+  <title>NexUI canonical monochrome symbol</title>
+  <g fill="none" stroke="#FFFFFF" stroke-width="40" stroke-linecap="round">
+    <path d="M129 112 A181 181 0 0 1 389 187"/>
+    <path d="M103 166 A181 181 0 0 0 112 354"/>
+    <path d="M154 396 A181 181 0 0 0 241 433"/>
+  </g>
+  <path fill="#FFFFFF" d="M118 151 L154 115 L347 308 L347 375 Z"/>
+  <path fill="#FFFFFF" d="M292 206 L347 261 L347 331 L292 276 Z"/>
+  <g fill="none" stroke="#FFFFFF" stroke-width="40" stroke-linecap="round">
+    <path d="M407 222 A181 181 0 0 1 409 305"/>
+    <path d="M389 347 A181 181 0 0 1 318 414"/>
+  </g>
+</svg>

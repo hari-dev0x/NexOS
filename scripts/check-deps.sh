@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # ==============================================================================
-# NexOS Dependency Checker
+# NexUI Dependency Checker
 # Identifies installed vs missing packages across core, shell, and media tools.
 # ==============================================================================
 set -euo pipefail
@@ -66,11 +66,11 @@ check_list() {
 }
 
 main() {
-    echo "NEXOS_DEPENDENCY_AUDIT_START"
+    echo "NEXUI_DEPENDENCY_AUDIT_START"
     check_list "Core Infrastructure" "${CORE_COMMANDS[@]}"
     check_list "Shell Components & Audio" "${SHELL_UTILITIES[@]}"
     check_list "Optional Extensions" "${OPTIONAL_EXTRAS[@]}"
-    echo "NEXOS_DEPENDENCY_AUDIT_END"
+    echo "NEXUI_DEPENDENCY_AUDIT_END"
 }
 
 main "$@"

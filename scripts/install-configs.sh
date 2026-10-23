@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # ==============================================================================
-# NexOS User Configuration Installer
+# NexUI User Configuration Installer
 # Installs portable, reviewed configuration trees into ~/.config
 # ==============================================================================
 set -euo pipefail
@@ -15,7 +15,7 @@ QS_TARGET="${CFG}/quickshell/sea-shell"
 DATA_TARGET="${CFG}/sea-shell"
 
 install_user_configs() {
-    echo "Installing NexOS desktop configuration trees..."
+    echo "Installing NexUI desktop configuration trees..."
 
     # 1. Target directories
     mkdir -p "${HYPR_TARGET}" "${QS_TARGET}" "${DATA_TARGET}"

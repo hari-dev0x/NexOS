@@ -1112,7 +1112,7 @@ Scope {
     property string apBarLogoPath: ""
     readonly property var barLogoChoices: [
         { k: "auto",        l: "auto" },
-        { k: "nexos",       l: "NexOS" },
+        { k: "nexui",       l: "NexUI" },
         { k: "sea",         l: "sea-shell" },
         { k: "cachy",       l: "cachyos" },
         { k: "arch",        l: "arch" },
@@ -1154,7 +1154,7 @@ Scope {
     readonly property var defaultLeftOrder: ["lgLogo","lgWork","lgScratch","lgTitle"]
     property var apLeftOrder: root.defaultLeftOrder
     readonly property var lgMeta: ({
-        lgLogo:  { i: "sailing",  l: "Logo",         d: "The NexOS mark — click opens the launcher" },
+        lgLogo:  { i: "sailing",  l: "Logo",         d: "The NexUI mark — click opens the launcher" },
         lgWork:  { i: "apps",     l: "Workspaces",   d: "Hyprland workspace indicators" },
         lgScratch: { i: "inventory_2", l: "Scratchpad", d: "How many windows are stashed — hidden while it holds none" },
         lgTitle: { i: "title",    l: "Window Title", d: "Class of the focused window" }
@@ -5657,7 +5657,7 @@ Scope {
 
                             Section { title: "the mark"; icon: "stars" }
                             Text {
-                                text: "auto reads /etc/os-release · nexos and NexOS are drawn and recolour with the "
+                                text: "auto reads /etc/os-release · nexui and NexUI are drawn and recolour with the "
                                       + "theme, the rest are Nerd Font glyphs"
                                 color: theme.faint; font.pixelSize: 10; font.family: Tok.mono
                                 Layout.leftMargin: 14; Layout.rightMargin: 14
@@ -6414,8 +6414,8 @@ Scope {
                                         RowLayout { spacing: 7
                                             Sym { text: "person"; sz: 14; color: theme.frost }
                                             Text { text: root.sysInfo.host || "…"; color: theme.frost; font.pixelSize: 13; font.family: Tok.mono }
-                                            // distro logo: NexOS & CachyOS are drawn; everything else uses the Font Logos glyph
-                                            NexLogo { visible: root.sysInfo.id === "nexos"; size: 15; color: theme.faint; Layout.leftMargin: 6 }
+                                            // distro logo: NexUI & CachyOS are drawn; everything else uses the Font Logos glyph
+                                            NexLogo { visible: root.sysInfo.id === "nexui" || root.sysInfo.id === "nexos"; size: 15; color: theme.faint; Layout.leftMargin: 6 }
                                             CachyLogo { visible: root.sysInfo.id === "cachyos"; size: 15; color: theme.faint; Layout.leftMargin: 6 }
                                             Text { visible: root.sysInfo.id !== "nexos" && root.sysInfo.id !== "cachyos"; text: root.distroGlyph(root.sysInfo.id, root.sysInfo.idlike)
                                                 font.family: "Symbols Nerd Font"; font.pixelSize: 14; color: theme.faint; Layout.leftMargin: 6 }

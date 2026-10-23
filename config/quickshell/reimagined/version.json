@@ -1,0 +1,19 @@
+{
+  "version": "2.33.0",
+  "commit": "48cdcecb0f6089cfbb7019054602eab28e154b3b",
+  "installed_at": "2026-10-12T14:00:00+05:30",
+  "installedAt": "2026-10-12T14:00:00+05:30",
+  "source": "upstream-sync",
+  "repo_path": "/home/hari/hari-dev0x/Projects/NexOS",
+  "repoPath": "/home/hari/hari-dev0x/Projects/NexOS",
+  "install_mode": "symlink",
+  "installMode": "symlink",
+  "update_strategy": "git",
+  "updateStrategy": "git",
+  "package_manager": "git",
+  "packageManager": "git",
+  "package_name": "inir",
+  "packageName": "inir",
+  "package_update_hint": "",
+  "packageUpdateHint": ""
+}

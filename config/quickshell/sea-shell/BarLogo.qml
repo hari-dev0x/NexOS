@@ -19,8 +19,8 @@ import QtQuick
 Item {
     id: root
 
-    // "nexos" · "sea" · "cachy" · "custom" · any key in `glyphs`
-    property string kind: "nexos"
+    // "nexui" · "nexos" · "sea" · "cachy" · "custom" · any key in `glyphs`
+    property string kind: "nexui"
     property string imagePath: ""
     property real size: 24
 
@@ -66,7 +66,7 @@ Item {
         return "";
     }
 
-    readonly property bool isNexos: root.kind === "nexos" || root.kind === "nex"
+    readonly property bool isNexos: root.kind === "nexui" || root.kind === "nexos" || root.kind === "nex"
     readonly property bool isGlyph: !isNexos && root.glyphs[root.kind] !== undefined && root.nerdFamily !== ""
     readonly property bool isImage: root.kind === "custom" && root.imagePath.length > 0
                                     && img.status !== Image.Error

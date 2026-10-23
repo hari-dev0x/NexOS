@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # ==============================================================================
-# NexOS Hardware Boot & Login Theme Installer (Optional)
+# NexUI Hardware Boot & Login Theme Installer (Optional)
 # Installs Plymouth boot splash and SDDM greeter themes into system directories.
 # Requires root privileges (pkexec or sudo).
 # ==============================================================================
@@ -34,7 +34,7 @@ fi
 
 install_boot() {
     echo "=========================================================="
-    echo " NexOS Hardware Boot & Login Sequence Installer"
+    echo " NexUI Hardware Boot & Login Sequence Installer"
     echo "=========================================================="
 
     mkdir -p "${BACKUP_DIR}"

@@ -6,7 +6,7 @@
 
 . /etc/os-release 2>/dev/null
 
-printf 'os=%s\n'     "NexOS"
+printf 'os=%s\n'     "NexUI"
 printf 'id=%s\n'     "nexos"
 printf 'idlike=%s\n' "${ID_LIKE:-}"          # fallback family (e.g. "arch") when id has no glyph
 printf 'host=%s@%s\n' "$USER" "$(hostnamectl hostname 2>/dev/null || hostname 2>/dev/null)"

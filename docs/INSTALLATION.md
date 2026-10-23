@@ -1,49 +1,86 @@
-# NexOS Installation Guide
+# NexUI Installation & Deployment Guide
 
-## 1. Trust & Safe Remote Installation
-We recommend inspecting the repository before executing installation scripts on your system.
+This guide covers installing and deploying **NexUI** on **CachyOS Linux** and **Arch Linux** systems.
 
-### Option A: Clone & Inspect (Recommended)
+---
+
+## 1. System Requirements
+
+- **Operating System:** CachyOS Linux or Arch Linux (rolling release)
+- **Display Server:** Wayland
+- **Compositor:** [Niri](https://github.com/YaLTeR/niri) (recommended version >= 0.1.10)
+- **Shell Engine:** [Quickshell](https://git.outfoxxed.me/outfoxxed/quickshell) (version >= 0.3.1 with Qt 6.9+)
+- **Audio Stack:** PipeWire with WirePlumber
+- **Required Fonts:** `Inter`, `Rubik`, `Oxanium`, `Material Symbols Rounded`, `noto-fonts`
+
+---
+
+## 2. Recommended Installation Method
+
+Clone the authoritative repository, inspect changes, and run the automated installer:
+
 ```bash
+# 1. Clone the repository
 git clone https://github.com/hari-dev0x/NexOS.git
 cd NexOS
 
-# Review planned actions without making any system changes:
+# 2. Run a dry-run check (audits dependencies and displays actions without modifying system)
 ./install.sh --dry-run
 
-# Run standard installation:
+# 3. Execute installation
 ./install.sh
 ```
 
-### Option B: One-Command Remote Installation
-For a clean, non-interactive setup on an Arch/CachyOS machine:
+---
+
+## 3. Remote One-Line Installation
+
+For a fresh CachyOS or Arch installation:
+
 ```bash
 curl -fsSL https://raw.githubusercontent.com/hari-dev0x/NexOS/main/install.sh | bash
 ```
 
 > [!NOTE]
-> Piping remote scripts directly into `bash` executes code on your machine. Inspect the remote script first by visiting [install.sh](https://raw.githubusercontent.com/hari-dev0x/NexOS/main/install.sh).
+> Review the remote script at [https://raw.githubusercontent.com/hari-dev0x/NexOS/main/install.sh](https://raw.githubusercontent.com/hari-dev0x/NexOS/main/install.sh) prior to running piped bash commands.
 
 ---
 
-## 2. Command Line Flags
+## 4. Installer Flags
+
 | Flag | Description |
 | :--- | :--- |
-| `-y`, `--yes` | Non-interactive execution (auto-confirms prompts) |
-| `--dry-run` | Audits dependencies and outputs planned file operations without writing |
-| `--no-deps` | Skips package manager invocation; installs configuration files only |
-| `--boot` | Deploys Plymouth boot animation and SDDM login theme (requires root elevation) |
-| `--uninstall` | Initiates safe removal and rollback |
+| `-y`, `--yes` | Non-interactive mode (automatically accepts prompts) |
+| `--dry-run` | Audits system dependencies and prints planned operations without writing |
+| `--no-deps` | Skips package manager; copies configuration files and assets only |
+| `--boot` | Installs Plymouth boot splash and custom SDDM greeter (requires root) |
+| `--uninstall` | Safely removes NexUI configurations and offers snapshot restoration |
 
 ---
 
-## 3. Post-Installation Verification
-1. Reload Hyprland: `hyprctl reload` or press `SUPER + SHIFT + R`.
-2. Verify Quickshell topbar: If the bar does not immediately appear, restart the supervisor:
+## 5. Post-Installation Verification
+
+1. **Verify the Desktop Service:**
    ```bash
-   sh ~/.config/quickshell/sea-shell/sea-bar-supervisor.sh --restart
+   systemctl --user status nexui.service
    ```
-3. Test keybindings:
-   - `SUPER + Space`: Open App Launcher
-   - `SUPER + S`: Open Control Center
-   - `SUPER + T`: Open Terminal
+   The service should display `Active: active (running)`.
+
+2. **Verify Niri Configuration:**
+   Reload Niri configuration dynamically:
+   ```bash
+   niri msg action reload-config
+   ```
+
+3. **Verify Shell Controls:**
+   Test keybindings:
+   - <kbd>SUPER</kbd> + <kbd>Space</kbd> — Open Centered Application Launcher
+   - <kbd>SUPER</kbd> + <kbd>S</kbd> — Toggle Control Center
+   - <kbd>SUPER</kbd> + <kbd>T</kbd> — Launch Terminal emulator (`kitty`)
+   - <kbd>SUPER</kbd> + <kbd>SHIFT</kbd> + <kbd>B</kbd> — Restart Desktop Shell
+
+4. **CLI Diagnostics:**
+   ```bash
+   ./nexui doctor
+   ```
+   Ensures all required runtime tools, D-Bus sockets, and audio daemons are operational.

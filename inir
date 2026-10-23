@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+SCRIPT_DIR="$(cd -- "$(dirname -- "$(readlink -f "${BASH_SOURCE[0]}" 2>/dev/null || printf '%s' "${BASH_SOURCE[0]}")")" && pwd)"
+RUNTIME_INIR="${SCRIPT_DIR}/config/quickshell/reimagined/scripts/inir"
+
+if [[ ! -x "$RUNTIME_INIR" ]]; then
+    chmod +x "$RUNTIME_INIR" 2>/dev/null || true
+fi
+
+export INIR_RUNTIME_DIR="${SCRIPT_DIR}/config/quickshell/reimagined"
+export INIR_CONFIG_DIR="${XDG_CONFIG_HOME:-$HOME/.config}/inir"
+
+exec "$RUNTIME_INIR" "$@"

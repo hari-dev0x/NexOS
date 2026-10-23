@@ -1,1 +1,2 @@
-DesktopWorkspace 1.0 desktop.qml
+module qs
+singleton GlobalStates 1.0 GlobalStates.qml

@@ -1,0 +1,7 @@
+module qs.modules.livingbar
+singleton LivingBarState 1.0 LivingBarState.qml
+singleton AgyActivityAdapter 1.0 AgyActivityAdapter.qml
+singleton SpellingService 1.0 SpellingService.qml
+singleton ContextualAiService 1.0 ContextualAiService.qml
+LivingBar 1.0 LivingBar.qml
+LivingBarWindow 1.0 LivingBarWindow.qml

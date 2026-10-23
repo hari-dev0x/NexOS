@@ -95,7 +95,7 @@ Rectangle {
             width: parent.width - 64
             spacing: 20
 
-            // NexOS Monolithic Glyph
+            // NexUI Monolithic Glyph
             Image {
                 anchors.horizontalCenter: parent.horizontalCenter
                 width: 64
@@ -146,7 +146,7 @@ Rectangle {
 
                 Text {
                     anchors.horizontalCenter: parent.horizontalCenter
-                    text: "NexOS Desktop"
+                    text: "NexUI Desktop"
                     color: "#76a9fa"
                     font.pixelSize: 12
                     font.letterSpacing: 1.5

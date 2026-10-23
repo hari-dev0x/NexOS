@@ -1,12 +1,12 @@
 #!/usr/bin/env bash
 # ==============================================================================
-# NexOS Safe Backup Helper
+# NexUI Safe Backup Helper
 # Creates a timestamped, non-destructive snapshot of user desktop configurations.
 # ==============================================================================
 set -euo pipefail
 
 CFG="${XDG_CONFIG_HOME:-$HOME/.config}"
-BACKUP_BASE="${CFG}/nexos-backups"
+BACKUP_BASE="${CFG}/nexui-backups"
 TIMESTAMP="$(date +%Y%m%d-%H%M%S)"
 CHECKPOINT_DIR="${BACKUP_BASE}/checkpoint-${TIMESTAMP}"
 
@@ -38,7 +38,7 @@ create_backup() {
     if [ "$count" -gt 0 ]; then
         echo "Backup successfully created at: ${CHECKPOINT_DIR}"
     else
-        echo "No pre-existing NexOS configurations detected to back up."
+        echo "No pre-existing NexUI configurations detected to back up."
     fi
 }
 

@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # ==============================================================================
-# NexOS Environment Detector
+# NexUI Environment Detector
 # Inspects operating system, init/session, compositor, and package management.
 # ==============================================================================
 set -euo pipefail

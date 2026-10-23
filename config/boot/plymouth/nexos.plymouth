@@ -1,6 +1,6 @@
 [Plymouth Theme]
-Name=NexOS
-Description=NexOS native hardware boot identity
+Name=NexUI
+Description=NexUI native hardware boot identity
 ModuleName=script
 
 [script]

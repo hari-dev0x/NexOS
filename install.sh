@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # ==============================================================================
-# NexOS Installer — Clean, Reproducible Linux Desktop Installation
+# NexUI Installer — Clean, Reproducible Linux Desktop Installation
 # Repository: https://github.com/hari-dev0x/NexOS
 # License: GNU General Public License v3.0 (GPL-3.0)
 # ==============================================================================
@@ -25,7 +25,7 @@ title() { printf '\n%s🔷 %s%s\n' "$(c '1;38;2;118;169;250')" "$*" "$(c 0)"; }
 
 usage() {
     cat << USAGE
-NexOS Desktop Environment Installer v${VERSION}
+NexUI Desktop Environment Installer v${VERSION}
 
 Usage:
   ./install.sh [options]
@@ -35,7 +35,7 @@ Options:
   --dry-run          Simulate actions without modifying files or installing packages
   --no-deps          Skip package manager dependency installation (configs only)
   --boot             Include optional Plymouth boot splash and SDDM login theme
-  --uninstall        Safely remove NexOS-managed configurations
+  --uninstall        Safely remove NexUI-managed configurations
   -h, --help         Show this help message
 
 Documentation & Verification:
@@ -62,7 +62,7 @@ while [ $# -gt 0 ]; do
     shift
 done
 
-title "NexOS Desktop Environment Installer v${VERSION}"
+title "NexUI Desktop Environment Installer v${VERSION}"
 
 # 1. Environment Detection
 info "Detecting operating system and desktop environment..."
@@ -75,7 +75,7 @@ info "Desktop:          ${CURRENT_DESKTOP}"
 info "Package Manager:  ${PKG_MGR} (AUR: ${AUR_HELPER})"
 
 if [ "${OS_ID}" != "cachyos" ] && [ "${OS_ID}" != "arch" ] && [ "${ID_LIKE}" != "arch" ]; then
-    warn "NexOS is optimized and verified for Arch Linux and CachyOS."
+    warn "NexUI is optimized and verified for Arch Linux and CachyOS."
     warn "Running on an unverified distribution (${OS_NAME}). Proceeding in --no-deps configuration mode."
     SKIP_DEPS=1
 fi
@@ -104,7 +104,7 @@ fi
 
 # 4. Interactive Confirmation
 if [ "$NON_INTERACTIVE" -eq 0 ]; then
-    printf '\nProceed with NexOS installation? [y/N]: '
+    printf '\nProceed with NexUI installation? [y/N]: '
     read -r response
     case "$response" in
         [yY][eE][sS]|[yY]) ;;
@@ -138,7 +138,7 @@ title "Creating Safety Backup"
 "${SCRIPT_DIR}/scripts/backup.sh"
 
 # 7. Configuration Deployment
-title "Deploying NexOS Configurations"
+title "Deploying NexUI Configurations"
 "${SCRIPT_DIR}/scripts/install-configs.sh"
 
 # 8. Optional Boot Themes
@@ -147,9 +147,9 @@ if [ "$INSTALL_BOOT" -eq 1 ]; then
     "${SCRIPT_DIR}/scripts/install-boot.sh"
 fi
 
-title "NexOS Installation Complete"
+title "NexUI Installation Complete"
 ok "Configurations deployed to ~/.config/hypr and ~/.config/quickshell/sea-shell."
-info "To start or reload the NexOS environment:"
+info "To start or reload the NexUI environment:"
 echo "  • In an existing Hyprland session: Press SUPER+SHIFT+B to reload the topbar, or hyprctl reload"
 echo "  • From login: Select 'Hyprland' session in SDDM / display manager"
 echo "  • To restore backups or remove: Run ./uninstall.sh"

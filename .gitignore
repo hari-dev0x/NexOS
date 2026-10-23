@@ -12,6 +12,9 @@ __pycache__/
 *.lock
 *.log
 *.bak*
+.backups/
+extras/iNiR-Walls/
+extras/yet-another-monochrome-icon-set/
 
 # OS & editor junk
 .DS_Store

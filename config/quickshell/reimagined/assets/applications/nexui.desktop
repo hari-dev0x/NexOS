@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=NexUI Shell
+Comment=NexUI desktop shell session
+Exec=nexui service restart
+Icon=nexui
+Terminal=false
+NoDisplay=true
+Categories=System;
